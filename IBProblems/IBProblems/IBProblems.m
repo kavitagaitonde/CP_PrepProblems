@@ -157,7 +157,7 @@
         iVal = [[A objectAtIndex:i] intValue];
         //NSLog(@"i = %d, iVal = %d", i, iVal);
         NSInteger j = i+1;
-        //jVal = 0;
+        jVal = 0;
         while (j < [A count]) {
             jVal = [[A objectAtIndex:j] intValue];
             //NSLog(@"j = %d, jVal = %d", j, jVal);
@@ -176,9 +176,8 @@
 }
 
 /* Given a singly linked list, modify the value of first half nodes such that :
- 
  1st node’s new value = the last node’s value - first node’s current value
- 2nd node’s new value = the second last node’s value - 2nd node’s current value,
+ 2nd node’s new value = the second last node’s value - 2nd node’s current value.
 */
 + (ListNode *) subtract:(ListNode *) A  {
     if ( A == nil) {
@@ -247,6 +246,7 @@
 
 /************ CHECKPOINT 5 PROBLEMS **************/
 
+/* Given an unsorted array of integers, find the length of the longest consecutive elements sequence. */
 + (NSInteger) longestConsecutive:(NSArray *) A  {
     //return [self longestSequenceUsingSort:A];
     return [self longestSequenceUsingMap:A];
@@ -338,6 +338,7 @@
     return maxSequence;
 }
 
+/* Given a collection of numbers that might contain duplicates, return all possible unique permutations. */
 + (void) getUniquePermutations:(NSMutableArray *) A result:(NSMutableArray *) result set: (NSMutableSet *)set start:(NSInteger) start end:(NSInteger) end {
     //NSLog(@"getUniquePermutation: %@, start=%d, end=%d", A, start, end);
     if(start == end) {

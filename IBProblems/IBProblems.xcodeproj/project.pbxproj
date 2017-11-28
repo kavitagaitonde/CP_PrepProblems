@@ -15,6 +15,8 @@
 		06B1887E1FC10043002DAA0A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06B1887C1FC10043002DAA0A /* LaunchScreen.storyboard */; };
 		06B1888C1FC10148002DAA0A /* IBProblems.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B1888B1FC10148002DAA0A /* IBProblems.m */; };
 		06B1888F1FC11333002DAA0A /* ListNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B1888E1FC11333002DAA0A /* ListNode.m */; };
+		06B188921FCD3B5A002DAA0A /* StringsProblems.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B188911FCD3B5A002DAA0A /* StringsProblems.m */; };
+		06B188951FCD3D38002DAA0A /* ArraysProblems.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B188941FCD3D38002DAA0A /* ArraysProblems.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,10 @@
 		06B1888B1FC10148002DAA0A /* IBProblems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBProblems.m; sourceTree = "<group>"; };
 		06B1888D1FC11333002DAA0A /* ListNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListNode.h; sourceTree = "<group>"; };
 		06B1888E1FC11333002DAA0A /* ListNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListNode.m; sourceTree = "<group>"; };
+		06B188901FCD3B5A002DAA0A /* StringsProblems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringsProblems.h; sourceTree = "<group>"; };
+		06B188911FCD3B5A002DAA0A /* StringsProblems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringsProblems.m; sourceTree = "<group>"; };
+		06B188931FCD3D38002DAA0A /* ArraysProblems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArraysProblems.h; sourceTree = "<group>"; };
+		06B188941FCD3D38002DAA0A /* ArraysProblems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArraysProblems.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +78,10 @@
 				06B1888E1FC11333002DAA0A /* ListNode.m */,
 				06B1888A1FC10148002DAA0A /* IBProblems.h */,
 				06B1888B1FC10148002DAA0A /* IBProblems.m */,
+				06B188931FCD3D38002DAA0A /* ArraysProblems.h */,
+				06B188941FCD3D38002DAA0A /* ArraysProblems.m */,
+				06B188901FCD3B5A002DAA0A /* StringsProblems.h */,
+				06B188911FCD3B5A002DAA0A /* StringsProblems.m */,
 				06B188771FC10043002DAA0A /* Main.storyboard */,
 				06B1887A1FC10043002DAA0A /* Assets.xcassets */,
 				06B1887C1FC10043002DAA0A /* LaunchScreen.storyboard */,
@@ -162,8 +172,10 @@
 			files = (
 				06B188761FC10043002DAA0A /* ViewController.m in Sources */,
 				06B188731FC10043002DAA0A /* AppDelegate.m in Sources */,
+				06B188951FCD3D38002DAA0A /* ArraysProblems.m in Sources */,
 				06B1888C1FC10148002DAA0A /* IBProblems.m in Sources */,
 				06B1888F1FC11333002DAA0A /* ListNode.m in Sources */,
+				06B188921FCD3B5A002DAA0A /* StringsProblems.m in Sources */,
 				06B188701FC10043002DAA0A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

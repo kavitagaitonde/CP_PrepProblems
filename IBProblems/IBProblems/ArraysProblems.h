@@ -10,4 +10,8 @@
 
 @interface ArraysProblems : NSObject
 
++ (NSArray *) maxset:(NSMutableArray *) A;
++ (NSInteger) repeatedNumber:(NSArray *) A;
++ (NSInteger) deleteDuplicatesFromSortedArray:(NSMutableArray *) A;
+
 @end

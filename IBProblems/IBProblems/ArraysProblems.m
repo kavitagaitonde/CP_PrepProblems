@@ -12,7 +12,7 @@
 
 
 // Max non negative subarray
--(NSArray *) maxset:(NSMutableArray *) A  {
++ (NSArray *) maxset:(NSMutableArray *) A  {
     NSInteger currNum = 0;
     NSInteger currSum = 0;
     NSInteger startIndex = 0;
@@ -47,7 +47,7 @@
 
 // Find first duplicate in array
 
--(NSInteger) repeatedNumber:(NSArray *) A  {
++ (NSInteger) repeatedNumber:(NSArray *) A  {
     NSInteger maxNum = 0;
     NSInteger maxCount = -1;
     NSInteger currCount = 0;
@@ -79,6 +79,64 @@
     } else {
         return maxNum;
     }
+}
+
+// Deleting duplicates from a array
+
++ (NSInteger) deleteDuplicatesFromSortedArray:(NSMutableArray *) A  {
+    if (A == nil || [A count] == 0) {
+        return 0;
+    }
+    NSInteger i = 1;
+    NSInteger count = 1;
+    NSInteger num = 0;
+    NSInteger swapIndex = 1;
+    NSInteger prevNum = [[A objectAtIndex:0] intValue];
+    while (i < [A count]) {
+        num = [[A objectAtIndex:i] intValue];
+        if (num != prevNum) {
+            count++;
+            [A replaceObjectAtIndex:swapIndex++ withObject:@(num)];
+            prevNum = num;
+        }
+        i++;
+    }
+    return count;
+}
+
+// Enumerate all primes numbers till the given number
+
++ (NSArray*) enumeratePrimes:(NSInteger) n  {
+    
+    if (n < 2) {
+        return @[];
+    }
+    
+    
+    NSMutableArray *primes = [NSMutableArray array];
+    for(NSInteger i=0;i<n;i++) {
+        [primes insertObject:@(NO) atIndex:i];
+    }
+    NSInteger x=3;
+    for(NSInteger i=2;i<=n;i++) {
+        
+        for(NSInteger j=x*i;j<=n;j++) {
+            if([[primes objectAtIndex:j] boolValue] == YES) {
+                
+            }
+        }
+    }
+    
+    while (i < [A count]) {
+        num = [[A objectAtIndex:i] intValue];
+        if (num != prevNum) {
+            count++;
+            [A replaceObjectAtIndex:swapIndex++ withObject:@(num)];
+            prevNum = num;
+        }
+        i++;
+    }
+    return count;
 }
 
 @end

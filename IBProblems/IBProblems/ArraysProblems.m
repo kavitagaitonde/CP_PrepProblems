@@ -106,7 +106,7 @@
 
 // Enumerate all primes numbers till the given number
 
-+ (NSArray*) enumeratePrimes:(NSInteger) n  {
+/*+ (NSArray*) enumeratePrimes:(NSInteger) n  {
     
     if (n < 2) {
         return @[];
@@ -137,6 +137,27 @@
         i++;
     }
     return count;
+}*/
+
+// Max contiguous subarray
++ (NSInteger) maxSubArray:(NSArray *) A  {
+    
+    if (A == nil || [A count] == 0) {
+        return 0;
+    }
+    
+    NSInteger i = 1;
+    NSInteger num = [[A objectAtIndex:0] intValue];
+    NSInteger maxSum = num;
+    NSInteger sum = num;
+    while (i<[A count]) {
+        num = [[A objectAtIndex:i] intValue];
+        sum = MAX(sum+num, num);
+        maxSum = MAX(maxSum, sum);
+        i++;
+    }
+    return maxSum;
 }
+
 
 @end

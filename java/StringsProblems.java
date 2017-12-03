@@ -1,4 +1,4 @@
-public class Solution {
+public class StringsProblems {
 
 	// Palindrome String
 	public int isPalindrome(String a) {
@@ -61,6 +61,23 @@ public class Solution {
 	        sBuf.append(a.charAt(i));
 	    }
 	    return sBuf.toString();
+	}
+
+	//Length of last word
+	public int lengthOfLastWord(final String a) {
+	    int len = 0, lastLen = 0;
+	    for(int i=0;i<a.length();i++) {
+	        if (a.charAt(i) != ' ') {
+	            len++;
+	        } else if(len != 0) {
+	            lastLen = len;
+	            len = 0;
+	        }
+	    }
+	    if (len > 0) {
+	        lastLen = len;
+	    }
+	    return lastLen;
 	}
 }
 

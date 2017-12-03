@@ -13,5 +13,6 @@
 + (NSArray *) maxset:(NSMutableArray *) A;
 + (NSInteger) repeatedNumber:(NSArray *) A;
 + (NSInteger) deleteDuplicatesFromSortedArray:(NSMutableArray *) A;
++ (NSInteger) maxSubArray:(NSArray *) A;
 
 @end

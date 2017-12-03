@@ -78,11 +78,16 @@
     NSLog(@"**** getUniquePermutations: %ld permutations", [result count]);
 */
     
-    // Arrays problems
+    // ARRAY problems
     //A = @[@(1), @(2), @(3)];
     A = @[@(2), @(3), @(5), @(5), @(7), @(11), @(11), @(11), @(11), @(13)];
     retval = [ArraysProblems deleteDuplicatesFromSortedArray:[A mutableCopy]];
     NSLog(@"**** deleteDuplicatesFromSortedArray: unique numbers = %ld", retval);
+    
+    // STRING problems
+    A = @[@"abc", @"ab", @"abd"];
+    NSString *retString = [StringsProblems longestCommonPrefix:A];
+    NSLog(@"**** longestCommonPrefix: prefix = %@", retString);
 }
 
 @end

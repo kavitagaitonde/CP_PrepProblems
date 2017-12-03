@@ -10,4 +10,7 @@
 
 @interface StringsProblems : NSObject
 
++ (NSString *) longestCommonPrefix:(NSArray *) A;
++ (BOOL) isPalindrome:(NSString *) A;
++ (NSString *) longestPalindrome:(NSString *) A ;
 @end

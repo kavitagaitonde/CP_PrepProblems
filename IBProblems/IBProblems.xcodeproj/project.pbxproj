@@ -17,6 +17,8 @@
 		06B1888F1FC11333002DAA0A /* ListNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B1888E1FC11333002DAA0A /* ListNode.m */; };
 		06B188921FCD3B5A002DAA0A /* StringsProblems.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B188911FCD3B5A002DAA0A /* StringsProblems.m */; };
 		06B188951FCD3D38002DAA0A /* ArraysProblems.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B188941FCD3D38002DAA0A /* ArraysProblems.m */; };
+		06B1889B1FD52E72002DAA0A /* HashingProblems.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B1889A1FD52E72002DAA0A /* HashingProblems.m */; };
+		06B1889E1FD5AFAE002DAA0A /* LinkedListsProblems.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B1889D1FD5AFAE002DAA0A /* LinkedListsProblems.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,10 @@
 		06B188911FCD3B5A002DAA0A /* StringsProblems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringsProblems.m; sourceTree = "<group>"; };
 		06B188931FCD3D38002DAA0A /* ArraysProblems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArraysProblems.h; sourceTree = "<group>"; };
 		06B188941FCD3D38002DAA0A /* ArraysProblems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArraysProblems.m; sourceTree = "<group>"; };
+		06B188991FD52E72002DAA0A /* HashingProblems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HashingProblems.h; sourceTree = "<group>"; };
+		06B1889A1FD52E72002DAA0A /* HashingProblems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HashingProblems.m; sourceTree = "<group>"; };
+		06B1889C1FD5AFAE002DAA0A /* LinkedListsProblems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkedListsProblems.h; sourceTree = "<group>"; };
+		06B1889D1FD5AFAE002DAA0A /* LinkedListsProblems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkedListsProblems.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +88,10 @@
 				06B188941FCD3D38002DAA0A /* ArraysProblems.m */,
 				06B188901FCD3B5A002DAA0A /* StringsProblems.h */,
 				06B188911FCD3B5A002DAA0A /* StringsProblems.m */,
+				06B188991FD52E72002DAA0A /* HashingProblems.h */,
+				06B1889A1FD52E72002DAA0A /* HashingProblems.m */,
+				06B1889C1FD5AFAE002DAA0A /* LinkedListsProblems.h */,
+				06B1889D1FD5AFAE002DAA0A /* LinkedListsProblems.m */,
 				06B188771FC10043002DAA0A /* Main.storyboard */,
 				06B1887A1FC10043002DAA0A /* Assets.xcassets */,
 				06B1887C1FC10043002DAA0A /* LaunchScreen.storyboard */,
@@ -172,8 +182,10 @@
 			files = (
 				06B188761FC10043002DAA0A /* ViewController.m in Sources */,
 				06B188731FC10043002DAA0A /* AppDelegate.m in Sources */,
+				06B1889B1FD52E72002DAA0A /* HashingProblems.m in Sources */,
 				06B188951FCD3D38002DAA0A /* ArraysProblems.m in Sources */,
 				06B1888C1FC10148002DAA0A /* IBProblems.m in Sources */,
+				06B1889E1FD5AFAE002DAA0A /* LinkedListsProblems.m in Sources */,
 				06B1888F1FC11333002DAA0A /* ListNode.m in Sources */,
 				06B188921FCD3B5A002DAA0A /* StringsProblems.m in Sources */,
 				06B188701FC10043002DAA0A /* main.m in Sources */,

@@ -35,7 +35,7 @@
     [super viewWillAppear:animated];
     
     //Invoke problems
-    NSInteger input, input2;
+    NSInteger input, input1, input2;
     NSArray *A, *B;
     NSMutableArray *result;
     NSInteger retval;
@@ -105,19 +105,26 @@
     list1 = [ListNode initWithArray:A];
     list2 = [ListNode initWithArray:B];
     list3 = [LinkedListsProblems  addTwoNumbers:list1 :list2];
-    NSLog(@"**** addTwoNumbers: %@", [list3 toString]);
+    NSLog(@"**** addTwoNumbers: list1 =  %@", [list1 toString]);
+    NSLog(@"**** addTwoNumbers: list2 =  %@", [list2 toString]);
+    NSLog(@"**** addTwoNumbers: added =  %@", [list3 toString]);
     
     A = @[@(2), @(3), @(5), @(15), @(7), @(13), @(11), @(16), @(12), @(13)];
     list1 = [ListNode initWithArray:A];
-    list2 = [LinkedListsProblems  reverseBetween:list1 :2 :5];
-    NSLog(@"**** reverseBetween: %@", [list2 toString]);
+    NSLog(@"**** reverseBetween: list = %@ from %ld to %ld", [list1 toString], input1, input2);
+    input1 = 2;
+    input2 = 5;
+    list2 = [LinkedListsProblems  reverseBetween:list1 :input1 :input2];
+    NSLog(@"**** reverseBetween: reversed = %@", [list2 toString]);
     
     A = @[@(2), @(3), @(5), @(7), @(13), @(16)];
     B = @[@(3), @(6), @(12), @(17), @(22), @(31)];
     list1 = [ListNode initWithArray:A];
     list2 = [ListNode initWithArray:B];
     list3 = [LinkedListsProblems  mergeTwoLists:list1 :list2];
-    NSLog(@"**** mergeLists: %@", [list3 toString]);
+    NSLog(@"**** mergeLists: list1 = %@", [list1 toString]);
+    NSLog(@"**** mergeLists: list2 = %@", [list2 toString]);
+    NSLog(@"**** mergeLists: merged = %@", [list3 toString]);
     
     // HASHING problems
     A = @[@(2), @(3), @(5), @(15), @(7), @(13), @(11), @(16), @(12), @(13)];

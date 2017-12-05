@@ -112,6 +112,13 @@
     list2 = [LinkedListsProblems  reverseBetween:list1 :2 :5];
     NSLog(@"**** reverseBetween: %@", [list2 toString]);
     
+    A = @[@(2), @(3), @(5), @(7), @(13), @(16)];
+    B = @[@(3), @(6), @(12), @(17), @(22), @(31)];
+    list1 = [ListNode initWithArray:A];
+    list2 = [ListNode initWithArray:B];
+    list3 = [LinkedListsProblems  mergeTwoLists:list1 :list2];
+    NSLog(@"**** mergeLists: %@", [list3 toString]);
+    
     // HASHING problems
     A = @[@(2), @(3), @(5), @(15), @(7), @(13), @(11), @(16), @(12), @(13)];
     result = [HashingProblems twoSum:A :20];

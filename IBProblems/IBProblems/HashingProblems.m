@@ -64,7 +64,6 @@
 
 // Diff K  -- Given an array of integers, find two numbers such that the difference is a specific target number K and i > j
 + (BOOL) twoDiff:(NSArray *) A :(NSInteger) B  {
-    NSMutableArray *newA = [NSMutableArray array];
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     NSInteger num = 0;
     NSInteger num1 = 0;

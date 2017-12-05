@@ -124,5 +124,47 @@
     return start;
 }
 
+// Merge 2 sorted linked lists
++(ListNode *) mergeTwoLists:(ListNode *) A :(ListNode *) B  {
+    if ( A == nil) {
+        return B;
+    }
+    if ( B == nil) {
+        return A;
+    }
+    ListNode *n1 = A;
+    ListNode *n2 = B;
+    ListNode *start = nil, *node = nil;
+    while (n1 != nil && n2 != nil) {
+        if (n1.data < n2.data) {
+            if (node == nil) {
+                node = n1;
+                start = node;
+            } else {
+                node.next = n1;
+                node = n1;
+            }
+            n1 = n1.next;
+            node.next = nil;
+        } else {
+            if (node == nil) {
+                node = n2;
+                start = node;
+            } else {
+                node.next = n2;
+                node = n2;
+            }
+            n2 = n2.next;
+            node.next = nil;
+        }
+    }
+    if (n1 == nil  && n2 != nil) {
+        node.next = n2;
+    } else if (n2 == nil  && n1 != nil) {
+        node.next = n1;
+    }
+    return start;
+}
+
 @end
 

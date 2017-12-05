@@ -62,4 +62,48 @@
     return newA;
 }
 
+// Diff K  -- Given an array of integers, find two numbers such that the difference is a specific target number K and i > j
++ (BOOL) twoDiff:(NSArray *) A :(NSInteger) B  {
+    NSMutableArray *newA = [NSMutableArray array];
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    NSInteger num = 0;
+    NSInteger num1 = 0;
+    if (A == nil || [A count] == 0) {
+        return NO;
+    }
+    
+    for(NSInteger i=0;i<[A count];i++) {
+        //NSLog(@"Adding num = %ld at index = %ld", [[A objectAtIndex:i] intValue], i);
+        NSMutableArray *arr = [dict objectForKey:[A objectAtIndex:i]];
+        if (arr == nil) {
+            arr = [NSMutableArray array];
+        }
+        [arr addObject:@(i)];
+        [dict setObject:arr forKey:[A objectAtIndex:i]];
+    }
+    
+    for(NSInteger i=0;i<[A count];i++) {
+        num = [[A objectAtIndex:i] intValue];
+        num1 = num - B;
+        NSLog(@"num = %ld, num1 = %ld", num, num1);
+        NSMutableArray *arr = [dict objectForKey:@(num1)];
+        if (arr != nil) {
+            NSInteger j=0;
+            NSInteger index=0;
+            while (j<[arr count]) {
+                //NSLog(@"j = %ld, arrcount = %ld", j, [arr count]);
+                index = [[arr objectAtIndex:j] intValue];
+                //NSLog(@"j = %ld, index = %ld", j, index);
+                if (index != i) {
+                    NSLog(@"i = %ld, index = %ld", i, index);
+                    return YES;
+                }
+                j++;
+            }
+        }
+    }
+    return NO;
+}
+
+
 @end

@@ -13,4 +13,6 @@
 + (NSString *) longestCommonPrefix:(NSArray *) A;
 + (BOOL) isPalindrome:(NSString *) A;
 + (NSString *) longestPalindrome:(NSString *) A ;
++ (BOOL) isSubsequence:(NSString *) A inString:(NSString *) B;
+
 @end

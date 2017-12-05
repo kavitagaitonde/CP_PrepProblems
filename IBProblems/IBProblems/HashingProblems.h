@@ -11,5 +11,6 @@
 @interface HashingProblems : NSObject
 
 + (NSMutableArray *) twoSum:(NSArray *) A :(NSInteger) B;
++ (BOOL) twoDiff:(NSArray *) A :(NSInteger) B;
 
 @end

@@ -103,6 +103,7 @@
     return nil;
 }
 
+//Is input string a palindrome
 + (BOOL) isPalindrome:(NSString *) A{
     NSInteger start = 0;
     NSInteger end = [A length]-1;
@@ -145,5 +146,25 @@
         }
     }
     return -1;
+}
+
+//Is string1 a subsequence of string2
++ (BOOL) isSubsequence:(NSString *) A inString:(NSString *) B  {
+    BOOL ret = NO;
+    NSInteger i=0;
+    NSInteger j = 0;
+    if (A == nil || B == nil || [A length] > [B length]) {
+        return ret;
+    }
+    while(i < [A length] && j < [B length]) {
+        if ([A characterAtIndex:i] == [B characterAtIndex:j]) {
+            i++;
+        }
+        j++;
+    }
+    if ( i == [A length]) {
+        ret = YES;
+    }
+    return ret;
 }
 @end

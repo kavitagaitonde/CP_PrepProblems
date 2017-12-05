@@ -8,17 +8,42 @@
 
 #import "LinkedListsProblems.h"
 
-@implementation ListNode
+/*@implementation ListNode
 
-/*- (id) initWithValue:(NSInteger)value next:(Node*)next {
-    Node *n = [super init];
+- (id) initWithValue:(NSInteger)value{
+    return [self initWithValue:value next:nil];
+}
+
+- (id) initWithValue:(NSInteger)value next:(ListNode*)next {
+    ListNode *n = [super init];
     if(n) {
-        n.value = value;
+        n.val = value;
         n.next = next;
     }
     return n;
-}*/
-@end
+}
+
++ (ListNode*) createLinkedListFrom:(NSArray*)A {
+    ListNode *head = nil;
+    ListNode *prev = nil;
+    if (A == nil) {
+        return head;
+    }
+    NSInteger i = 0;
+    while (i < [A count]) {
+        NSInteger num = [[A objectAtIndex:i] intValue];
+        ListNode *node = [[ListNode alloc] initWithValue:num];
+        if(head == nil) {
+            head = node;
+            prev = node;
+        } else {
+            prev.next = node;
+            prev = node;
+        }
+    }
+    return head;
+}
+@end*/
 
 @implementation LinkedListsProblems
 
@@ -29,9 +54,9 @@
     ListNode *node = nil;
     NSInteger temp = 0;
     while (a != nil  || b != nil) {
-        temp = temp + (a!=nil?a.val:0) + (b!=nil?b.val:0);
+        temp = temp + (a!=nil?a.data:0) + (b!=nil?b.data:0);
         node = [ListNode new];
-        node.val = temp % 10;
+        node.data = temp % 10;
         if(list == nil) {
             list = node;
             head = list;
@@ -50,14 +75,14 @@
     }
     if (temp != 0) {
         list.next = [ListNode new];
-        list.next.val = temp;
+        list.next.data = temp;
         list = list.next;
     }
     return head;
 }
 
 // Reverse linked list between 2 nodes
--(ListNode *) reverseBetween:(ListNode *) A :(NSInteger) B :(NSInteger) C  {
++ (ListNode *) reverseBetween:(ListNode *) A :(NSInteger) B :(NSInteger) C  {
     ListNode *prev = nil;
     if (A == nil) {
         return nil;
@@ -78,7 +103,7 @@
     return A;
 }
 
--(ListNode *) reverseList:(ListNode *) A tillCount:(NSInteger) B {
++(ListNode *) reverseList:(ListNode *) A tillCount:(NSInteger) B {
     NSInteger count = 0;
     ListNode *n = A;
     ListNode *start = nil;

@@ -7,14 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-
-@interface ListNode : NSObject
-@property (nonatomic, assign) NSInteger val;
-@property (nonatomic, strong) ListNode* next;
-@end
+#import "ListNode.h"
 
 @interface LinkedListsProblems : NSObject
 
 + (ListNode *) addTwoNumbers:(ListNode *) a :(ListNode *) b;
++ (ListNode *) reverseBetween:(ListNode *) A :(NSInteger) B :(NSInteger) C;
++(ListNode *) reverseList:(ListNode *) A tillCount:(NSInteger) B;
 
 @end

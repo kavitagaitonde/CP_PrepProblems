@@ -167,4 +167,15 @@
     }
     return ret;
 }
+
+//Print all subsequences of string
+//TODO
++ (void) printAllSubsequences:(NSString *) A {
+    for (NSInteger i=0;i<[A length];i++) {
+        for (NSInteger j=[A length];j>i;j--) {
+            
+        }
+    }
+}
+
 @end

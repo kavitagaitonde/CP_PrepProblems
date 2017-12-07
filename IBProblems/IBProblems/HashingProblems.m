@@ -105,4 +105,66 @@
 }
 
 
+//Substring concatenation
++ (NSArray *) findSubstring:(NSString *) A :(NSArray *) B  {
+    if (A == nil || [A length] == 0 || B == nil || [B count] == 0) {
+        return @[];
+    }
+    NSMutableArray *arr = [NSMutableArray array];
+    NSString *first = [B objectAtIndex:0];
+    NSLog(@"first = %@",first);
+    NSInteger wordLen = [first length];
+    NSLog(@"wordLen = %ld",wordLen);
+    NSInteger totalWordsLen = [B count] * wordLen;
+    NSLog(@"totalWordsLen = %ld",totalWordsLen);
+    NSInteger i = 0;
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    NSInteger j=0;
+    for (j=0;j<[B count];j++) {
+        [dict setObject:@(0) forKey:[B objectAtIndex:j]];
+    }
+    NSInteger cnt=0;
+    NSInteger index=0;
+    while (i <= [A length]) {
+        NSLog(@"i = %ld",i);
+        j=i;
+        NSInteger max = i+totalWordsLen;
+        while (j < max) {
+            NSRange range = NSMakeRange(j, wordLen);
+            if (range.location != NSNotFound) {
+                NSString *s = [A substringWithRange:range];
+                NSLog(@"found s = %@",s);
+                
+                NSNumber* n = [dict objectForKey:s];
+                if (n != nil && [n intValue] == 0) {
+                    i+=wordLen;
+                    if (cnt == 0) {
+                        index = i;
+                    }
+                    cnt++;
+                    j += wordLen;
+                    [dict setObject:@(1) forKey:s];
+                }else{
+                    NSLog(@"found s = %@, but it already is counted or does not exist",s);
+                    i++;
+                    continue;
+                }
+            } else {
+                NSLog(@"not found s");
+                i++;
+                continue;
+            }
+        }
+        if (j == totalWordsLen) {
+            [arr addObject:@(index)];
+            cnt = 0;
+            i = j;
+        }
+    }
+    /*if (cnt == totalWordsLen) {
+        [arr addObject:@(index)];
+    }*/
+    return arr;
+}
+
 @end

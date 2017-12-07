@@ -42,6 +42,8 @@
     ListNode *list1, *list2, *list3;
     BOOL retBool;
     NSString *retString;
+    NSString *str1;
+    
     /*
     // ************ CHECKPOINT 2 PROBLEMS **************
     
@@ -134,6 +136,12 @@
     A = @[@(2), @(3), @(5), @(15), @(7), @(13), @(11), @(16), @(12), @(13)];
     retBool = [HashingProblems twoDiff:A :8];
     NSLog(@"**** twoDiff: %@", retBool?@"YES":@"NO");
+   
+    A = @[@"foo", @"bar"];
+    str1 = @"barfoothefoobarman";
+    NSLog(@"**** findSubstring in : %@ for array = %@", str1, A);
+    [HashingProblems findSubstring:str1 :A];
+
 
 }
 

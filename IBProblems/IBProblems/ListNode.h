@@ -13,6 +13,7 @@
 @property (assign, nonatomic) NSUInteger data;
 @property (strong) ListNode *next;
 
+- (id) initWithData:(NSUInteger)data;
 + (id) initWithArray:(NSArray*)array;
 - (NSString *)toString;
 

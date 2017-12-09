@@ -13,7 +13,8 @@
 
 + (ListNode *) addTwoNumbers:(ListNode *) a :(ListNode *) b;
 + (ListNode *) reverseBetween:(ListNode *) A :(NSInteger) B :(NSInteger) C;
-+(ListNode *) reverseList:(ListNode *) A tillCount:(NSInteger) B;
-+(ListNode *) mergeTwoLists:(ListNode *) A :(ListNode *) B;
-
++ (ListNode *) reverseList:(ListNode *) A tillCount:(NSInteger) B;
++ (ListNode *) mergeTwoLists:(ListNode *) A :(ListNode *) B;
++ (ListNode *) swapPairs:(ListNode *) A;
++ (ListNode *) detectCycle:(ListNode *) A;
 @end

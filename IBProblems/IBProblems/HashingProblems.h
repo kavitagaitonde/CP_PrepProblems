@@ -13,5 +13,6 @@
 + (NSMutableArray *) twoSum:(NSArray *) A :(NSInteger) B;
 + (BOOL) twoDiff:(NSArray *) A :(NSInteger) B;
 + (NSArray *) findSubstring:(NSString *) A :(NSArray *) B;
++ (NSMutableArray *) anagrams:(NSArray *) A;
 
 @end

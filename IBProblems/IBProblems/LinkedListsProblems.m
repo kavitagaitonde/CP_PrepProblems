@@ -166,5 +166,55 @@
     return start;
 }
 
+//Swap adjacent pairs
++ (ListNode *) swapPairs:(ListNode *) A  {
+    if (A == nil || A.next == nil) {
+        return A;
+    }
+    ListNode *first = A;
+    ListNode *second = A.next;
+    NSInteger temp;
+    while (first != nil && second != nil) {
+        temp = first.data;
+        first.data = second.data;
+        second.data = temp;
+        first = second.next;
+        if (first.next != nil) {
+            second = first.next;
+        } else {
+            second = nil;
+        }
+    }
+    return A;
+}
+
+//Detect cycle and return node at which cycle begins if cycle exists, else return nil
++ (ListNode *) detectCycle:(ListNode *) A  {
+    if (A == nil || A.next == nil || A.next.next == nil) {
+        return nil;
+    }
+    ListNode *slow = A;
+    ListNode *fast = A;
+    while (slow != nil && fast != nil) {
+        slow = slow.next;
+        fast = fast.next;
+        if (fast != nil) {
+            fast = fast.next;
+        } else {
+            //no cycle
+            break;
+        }
+        if (slow == fast) {
+            //cycle
+            while (A != slow) {
+                A = A.next;
+                slow = slow.next;
+            }
+            return A;
+        }
+    }
+    return nil;
+}
+
 @end
 

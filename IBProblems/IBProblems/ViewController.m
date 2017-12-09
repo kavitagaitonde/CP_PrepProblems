@@ -36,7 +36,7 @@
     
     //Invoke problems
     NSInteger input, input1, input2;
-    NSArray *A, *B;
+    NSArray *A, *B, *retArray;
     NSMutableArray *result;
     NSInteger retval;
     ListNode *list1, *list2, *list3;
@@ -128,6 +128,29 @@
     NSLog(@"**** mergeLists: list2 = %@", [list2 toString]);
     NSLog(@"**** mergeLists: merged = %@", [list3 toString]);
     
+    A = @[@(2), @(3), @(5), @(7), @(13), @(16), @(11)];
+    list1 = [ListNode initWithArray:A];
+    NSLog(@"**** swapPairs: list input = %@", [list1 toString]);
+    list2 = [LinkedListsProblems  swapPairs:list1];
+    NSLog(@"**** swapPairs: list output = %@", [list2 toString]);
+    
+    ListNode *la = [[ListNode alloc] initWithData:1];
+    ListNode *lb = [[ListNode alloc]  initWithData:2];
+    la.next = lb;
+    ListNode *lc = [[ListNode alloc]  initWithData:3];
+    lb.next = lc;
+    ListNode *ld = [[ListNode alloc]  initWithData:4];
+    lc.next = ld;
+    ListNode *le = [[ListNode alloc]  initWithData:5];
+    ld.next = le;
+    le.next = lc;
+    list2 = [LinkedListsProblems  detectCycle:la];
+    if (list2 != nil) {
+        NSLog(@"**** detectCycle: %ld", list2.data);
+    } else {
+        NSLog(@"**** detectCycle: No cycle detected");
+    }
+    
     // HASHING problems
     A = @[@(2), @(3), @(5), @(15), @(7), @(13), @(11), @(16), @(12), @(13)];
     result = [HashingProblems twoSum:A :20];
@@ -137,11 +160,16 @@
     retBool = [HashingProblems twoDiff:A :8];
     NSLog(@"**** twoDiff: %@", retBool?@"YES":@"NO");
    
-    A = @[@"foo", @"bar"];
-    str1 = @"barfoothefoobarman";
+    A = @[@"word",@"good",@"best",@"good"];//@[@"bar",@"foo",@"the"];  //@[@"foo", @"bar"];
+    str1 = @"wordgoodgoodgoodbestword"; //@"barfoofoobarthefoobarman"; //@"barfoothefoobarman";
     NSLog(@"**** findSubstring in : %@ for array = %@", str1, A);
-    [HashingProblems findSubstring:str1 :A];
-
+    retArray = [HashingProblems findSubstring:str1 :A];
+    NSLog(@"**** findSubstring: %@", retArray);
+    
+    A = @[@"word",@"good",@"rowd"];
+    NSLog(@"**** anagrams in : %@ ", A);
+    retArray = [HashingProblems anagrams:A];
+    NSLog(@"**** anagrams in : %@ ", retArray);
 
 }
 

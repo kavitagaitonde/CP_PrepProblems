@@ -234,7 +234,7 @@
         NSRange r = NSMakeRange(i,1);
         NSString *s1 = [s substringWithRange:r];
         NSNumber *num = [dict objectForKey:s1];
-        if (num != nil && num > 0) {
+        if (num != nil && [num intValue] > 0) {
             [dict setObject:@([num intValue]-1) forKey:s1];
         } else {
             ret = false;

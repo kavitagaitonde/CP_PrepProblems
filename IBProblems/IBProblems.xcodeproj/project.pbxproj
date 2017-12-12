@@ -19,6 +19,8 @@
 		06B188951FCD3D38002DAA0A /* ArraysProblems.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B188941FCD3D38002DAA0A /* ArraysProblems.m */; };
 		06B1889B1FD52E72002DAA0A /* HashingProblems.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B1889A1FD52E72002DAA0A /* HashingProblems.m */; };
 		06B1889E1FD5AFAE002DAA0A /* LinkedListsProblems.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B1889D1FD5AFAE002DAA0A /* LinkedListsProblems.m */; };
+		06CAECF11FDEF53500FC39AC /* BinarySearchProblems.m in Sources */ = {isa = PBXBuildFile; fileRef = 06CAECF01FDEF53500FC39AC /* BinarySearchProblems.m */; };
+		06CAECF41FE035BA00FC39AC /* TreesAndHeaps.m in Sources */ = {isa = PBXBuildFile; fileRef = 06CAECF31FE035BA00FC39AC /* TreesAndHeaps.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,10 @@
 		06B1889A1FD52E72002DAA0A /* HashingProblems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HashingProblems.m; sourceTree = "<group>"; };
 		06B1889C1FD5AFAE002DAA0A /* LinkedListsProblems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkedListsProblems.h; sourceTree = "<group>"; };
 		06B1889D1FD5AFAE002DAA0A /* LinkedListsProblems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkedListsProblems.m; sourceTree = "<group>"; };
+		06CAECEF1FDEF53500FC39AC /* BinarySearchProblems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BinarySearchProblems.h; sourceTree = "<group>"; };
+		06CAECF01FDEF53500FC39AC /* BinarySearchProblems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BinarySearchProblems.m; sourceTree = "<group>"; };
+		06CAECF21FE035BA00FC39AC /* TreesAndHeaps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreesAndHeaps.h; sourceTree = "<group>"; };
+		06CAECF31FE035BA00FC39AC /* TreesAndHeaps.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TreesAndHeaps.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +103,10 @@
 				06B1887C1FC10043002DAA0A /* LaunchScreen.storyboard */,
 				06B1887F1FC10043002DAA0A /* Info.plist */,
 				06B1886E1FC10043002DAA0A /* Supporting Files */,
+				06CAECEF1FDEF53500FC39AC /* BinarySearchProblems.h */,
+				06CAECF01FDEF53500FC39AC /* BinarySearchProblems.m */,
+				06CAECF21FE035BA00FC39AC /* TreesAndHeaps.h */,
+				06CAECF31FE035BA00FC39AC /* TreesAndHeaps.m */,
 			);
 			path = IBProblems;
 			sourceTree = "<group>";
@@ -181,6 +191,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				06B188761FC10043002DAA0A /* ViewController.m in Sources */,
+				06CAECF41FE035BA00FC39AC /* TreesAndHeaps.m in Sources */,
 				06B188731FC10043002DAA0A /* AppDelegate.m in Sources */,
 				06B1889B1FD52E72002DAA0A /* HashingProblems.m in Sources */,
 				06B188951FCD3D38002DAA0A /* ArraysProblems.m in Sources */,
@@ -188,6 +199,7 @@
 				06B1889E1FD5AFAE002DAA0A /* LinkedListsProblems.m in Sources */,
 				06B1888F1FC11333002DAA0A /* ListNode.m in Sources */,
 				06B188921FCD3B5A002DAA0A /* StringsProblems.m in Sources */,
+				06CAECF11FDEF53500FC39AC /* BinarySearchProblems.m in Sources */,
 				06B188701FC10043002DAA0A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -343,6 +355,7 @@
 				06B188841FC10043002DAA0A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

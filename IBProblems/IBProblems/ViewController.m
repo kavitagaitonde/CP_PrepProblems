@@ -13,6 +13,7 @@
 #import "ListNode.h"
 #import "LinkedListsProblems.h"
 #import "HashingProblems.h"
+#import "BinarySearchProblems.h"
 
 @interface ViewController ()
 
@@ -94,14 +95,17 @@
 
 
     // STRING problems
+    /*
     A = @[@"abc", @"ab", @"abd"];
     retString = [StringsProblems longestCommonPrefix:A];
     NSLog(@"**** longestCommonPrefix: prefix = %@", retString);
  
     retBool = [StringsProblems isSubsequence:@"euni" inString:@"sequence"];
     NSLog(@"**** isSubsequence: %@", retBool?@"YES":@"NO");
-   
+    */
+    
     // LINKEDLIST problems
+    /*
     A = @[@(2), @(3), @(5)];
     B = @[@(1), @(7), @(4)];
     list1 = [ListNode initWithArray:A];
@@ -150,8 +154,10 @@
     } else {
         NSLog(@"**** detectCycle: No cycle detected");
     }
+    */
     
     // HASHING problems
+    /*
     A = @[@(2), @(3), @(5), @(15), @(7), @(13), @(11), @(16), @(12), @(13)];
     result = [HashingProblems twoSum:A :20];
     NSLog(@"**** twoSum: %@", result);
@@ -170,7 +176,22 @@
     NSLog(@"**** anagrams in : %@ ", A);
     retArray = [HashingProblems anagrams:A];
     NSLog(@"**** anagrams in : %@ ", retArray);
-
+    */
+    
+    // BINARY SEARCH problems
+    input = 11;
+    retval = [BinarySearchProblems findSqrtOf:input];
+    NSLog(@"**** findSqrtOf %ld : %ld ", input, retval);
+    input = 100;
+    retval = [BinarySearchProblems findSqrtOf:input];
+    NSLog(@"**** findSqrtOf %ld : %ld ", input, retval);
+    input = 56;
+    retval = [BinarySearchProblems findSqrtOf:input];
+    NSLog(@"**** findSqrtOf %ld : %ld ", input, retval);
+    input = 144;
+    retval = [BinarySearchProblems findSqrtOf:input];
+    NSLog(@"**** findSqrtOf %ld : %ld ", input, retval);
+    
 }
 
 @end

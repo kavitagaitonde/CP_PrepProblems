@@ -129,4 +129,59 @@
     return arr;
 }
 
++ (ListNode*) mergeKSortedLists:(NSMutableArray *) A {
+    NSMutableArray *minHeap = [NSMutableArray array];
+    while () {
+        NSInteger i = 0;
+        while (i < [A count]) {
+            ListNode *node = [A objectAtIndex:i];
+            [self addToMinHeap:minHeap node:node];
+            if (node.next != nil) {
+                [A replaceObjectAtIndex:i withObject:node.next];
+                i++;
+            } else {
+                [A removeObjectAtIndex:i];
+            }
+        }
+    }
+}
+
++ (void) addToMinHeap:(NSMutableArray *)minHeap node:(ListNode*)node {
+    [minHeap addObject:node];
+    //heapify : child = 2n, 2n+1 and parent = n/2
+    NSInteger index = [minHeap count];
+    while (index > 1) {
+        NSInteger parentIndex = index/2;
+        ListNode *parent = [minHeap objectAtIndex:parentIndex-1];
+        if (parent.data > node.data) {
+            //swap
+            [minHeap replaceObjectAtIndex:index-1 withObject:parent];
+            [minHeap replaceObjectAtIndex:parentIndex-1 withObject:node];
+            node = [minHeap objectAtIndex:parentIndex-1];
+            index = parentIndex;
+        } else {
+            break;
+        }
+    }
+}
+
++ (void) addToMinHeap:(NSMutableArray *)minHeap node:(ListNode*)node {
+    [minHeap addObject:node];
+    //heapify : child = 2n, 2n+1 and parent = n/2
+    NSInteger index = [minHeap count];
+    while (index > 1) {
+        NSInteger parentIndex = index/2;
+        ListNode *parent = [minHeap objectAtIndex:parentIndex-1];
+        if (parent.data > node.data) {
+            //swap
+            [minHeap replaceObjectAtIndex:index-1 withObject:parent];
+            [minHeap replaceObjectAtIndex:parentIndex-1 withObject:node];
+            node = [minHeap objectAtIndex:parentIndex-1];
+            index = parentIndex;
+        } else {
+            break;
+        }
+    }
+}
+
 @end

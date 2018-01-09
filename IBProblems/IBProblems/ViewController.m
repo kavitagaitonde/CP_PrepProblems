@@ -14,6 +14,9 @@
 #import "LinkedListsProblems.h"
 #import "HashingProblems.h"
 #import "BinarySearchProblems.h"
+#import "RecursionProblems.h"
+#import "BitManipulationProblems.h"
+
 
 @interface ViewController ()
 
@@ -179,7 +182,7 @@
     */
     
     // BINARY SEARCH problems
-    input = 11;
+    /*input = 11;
     retval = [BinarySearchProblems findSqrtOf:input];
     NSLog(@"**** findSqrtOf %ld : %ld ", input, retval);
     input = 100;
@@ -191,7 +194,37 @@
     input = 144;
     retval = [BinarySearchProblems findSqrtOf:input];
     NSLog(@"**** findSqrtOf %ld : %ld ", input, retval);
+    */
     
+    // RECURSION problems
+    /*A = @[@(2), @(1), @(3), @(2),];
+    retArray = [RecursionProblems allPossibleSubsets:[A mutableCopy]];
+    NSLog(@"**** allPossibleSubsets: %@", retArray);
+    A = @[@(1), @(3), @(2)];
+    retArray = [RecursionProblems allPossiblePermutations:[A mutableCopy]];
+    NSLog(@"**** allPossiblePermutations: %@", retArray);
+    A = @[@(1), @(3), @(2), @(4)];
+    retArray = [RecursionProblems allPossibleCombinations:[A mutableCopy] forK:2];
+    NSLog(@"**** allPossibleCombinations: %@", retArray);
+    retArray = [RecursionProblems allPossibleCombinations:4 B:2];
+    NSLog(@"**** allPossibleCombinations: %@", retArray);
+    A = @[@(2), @(3), @(6), @(7)];
+    retArray = [RecursionProblems allPossibleCombinationsSum:[A mutableCopy] forTotal:7];
+    NSLog(@"**** allPossibleCombinationsSum: %@", retArray);
+    retArray = [RecursionProblems palindromePartitioning:@"aab"];
+    NSLog(@"**** palindromePartitioning: %@", retArray);
+     retArray = [RecursionProblems generateAllParenthesis:3];
+     NSLog(@"**** generateAllParenthesis: %@", retArray);*/
+
+    
+    // BIT MANIPULATION problems
+    retval = [BitManipulationProblems countOf1BitsIn:11];
+    NSLog(@"**** countOf1BitsIn: %ld", retval);
+    A = @[@(2), @(3), @(7), @(1), @(3), @(2), @(7)];
+    retval = [BitManipulationProblems singleNumber:A];
+    NSLog(@"**** countOf1BitsIn: %ld", retval);
+
+
 }
 
 @end

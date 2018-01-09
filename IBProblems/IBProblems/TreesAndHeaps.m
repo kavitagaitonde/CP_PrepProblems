@@ -129,7 +129,7 @@
     return arr;
 }
 
-+ (ListNode*) mergeKSortedLists:(NSMutableArray *) A {
+/*+ (ListNode*) mergeKSortedLists:(NSMutableArray *) A {
     NSMutableArray *minHeap = [NSMutableArray array];
     while () {
         NSInteger i = 0;
@@ -163,25 +163,88 @@
             break;
         }
     }
-}
+}*/
 
-+ (void) addToMinHeap:(NSMutableArray *)minHeap node:(ListNode*)node {
-    [minHeap addObject:node];
-    //heapify : child = 2n, 2n+1 and parent = n/2
-    NSInteger index = [minHeap count];
-    while (index > 1) {
-        NSInteger parentIndex = index/2;
-        ListNode *parent = [minHeap objectAtIndex:parentIndex-1];
-        if (parent.data > node.data) {
-            //swap
-            [minHeap replaceObjectAtIndex:index-1 withObject:parent];
-            [minHeap replaceObjectAtIndex:parentIndex-1 withObject:node];
-            node = [minHeap objectAtIndex:parentIndex-1];
-            index = parentIndex;
++ (TreeNode*) getNextSuccessor:(TreeNode*)node successorOf:(NSInteger)successorOf {
+    if (node == nil) {
+        return nil;
+    }
+    
+    TreeNode *sNode = nil;
+    while (node != nil) {
+        if (node.val > successorOf) {
+            sNode = node;
+            node = node.left;
         } else {
-            break;
+            node = node.right;
         }
     }
+    
+    return sNode;
+}
+
+//Given a binary tree, determine if it is height-balanced.
+-(NSInteger) isBalanced:(TreeNode *) A  {
+    
+    if ( A == nil) {
+        return 0;
+    }
+    
+    NSInteger height = [self depth:A];
+    if (height > 0) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+-(NSInteger) depth:(TreeNode *) A  {
+    
+    if ( A == nil) {
+        return 0;
+    }
+    
+    NSInteger leftHeight = 0;
+    NSInteger rightHeight = 0;
+    if (A.left != nil) {
+        leftHeight = [self depth:A.left];
+        if (leftHeight == 0) {
+            return 0;
+        }
+    }
+    if (A.right != nil) {
+        rightHeight = [self depth:A.right];
+        if (rightHeight == 0) {
+            return 0;
+        }
+    }
+    
+    
+    if (ABS(leftHeight - rightHeight) > 1) {
+        return 0;
+    } else {
+        if (leftHeight > rightHeight) {
+            return leftHeight+1;
+        } else {
+            return rightHeight+1;
+        }
+    }
+}
+
+//Given two binary trees, write a function to check if they are equal or not.
+-(BOOL) isSameTree:(TreeNode *) A B:(TreeNode *) B  {
+    if (A == nil && B == nil) {
+        return YES;
+    } else if ((A == nil && B != nil) || (A != nil && B == nil)) {
+        return NO;
+    }
+    
+    if (A.val == B.val) {
+        return [self isSameTree:A.left B:B.left] && [self isSameTree:A.right B:B.right];
+    } else {
+        return NO;
+    }
+    
 }
 
 @end

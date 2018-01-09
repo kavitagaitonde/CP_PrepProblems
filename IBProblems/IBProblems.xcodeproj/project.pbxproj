@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		060646A91FFF5637007967BF /* RecursionProblems.m in Sources */ = {isa = PBXBuildFile; fileRef = 060646A81FFF5637007967BF /* RecursionProblems.m */; };
+		060646AC200530E0007967BF /* BitManipulationProblems.m in Sources */ = {isa = PBXBuildFile; fileRef = 060646AB200530E0007967BF /* BitManipulationProblems.m */; };
 		06B188701FC10043002DAA0A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B1886F1FC10043002DAA0A /* main.m */; };
 		06B188731FC10043002DAA0A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B188721FC10043002DAA0A /* AppDelegate.m */; };
 		06B188761FC10043002DAA0A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B188751FC10043002DAA0A /* ViewController.m */; };
@@ -24,6 +26,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		060646A71FFF5637007967BF /* RecursionProblems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecursionProblems.h; sourceTree = "<group>"; };
+		060646A81FFF5637007967BF /* RecursionProblems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecursionProblems.m; sourceTree = "<group>"; };
+		060646AA200530E0007967BF /* BitManipulationProblems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BitManipulationProblems.h; sourceTree = "<group>"; };
+		060646AB200530E0007967BF /* BitManipulationProblems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BitManipulationProblems.m; sourceTree = "<group>"; };
 		06B1886B1FC10043002DAA0A /* IBProblems.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IBProblems.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06B1886F1FC10043002DAA0A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		06B188711FC10043002DAA0A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -98,6 +104,8 @@
 				06B1889A1FD52E72002DAA0A /* HashingProblems.m */,
 				06B1889C1FD5AFAE002DAA0A /* LinkedListsProblems.h */,
 				06B1889D1FD5AFAE002DAA0A /* LinkedListsProblems.m */,
+				060646A71FFF5637007967BF /* RecursionProblems.h */,
+				060646A81FFF5637007967BF /* RecursionProblems.m */,
 				06B188771FC10043002DAA0A /* Main.storyboard */,
 				06B1887A1FC10043002DAA0A /* Assets.xcassets */,
 				06B1887C1FC10043002DAA0A /* LaunchScreen.storyboard */,
@@ -107,6 +115,8 @@
 				06CAECF01FDEF53500FC39AC /* BinarySearchProblems.m */,
 				06CAECF21FE035BA00FC39AC /* TreesAndHeaps.h */,
 				06CAECF31FE035BA00FC39AC /* TreesAndHeaps.m */,
+				060646AA200530E0007967BF /* BitManipulationProblems.h */,
+				060646AB200530E0007967BF /* BitManipulationProblems.m */,
 			);
 			path = IBProblems;
 			sourceTree = "<group>";
@@ -196,8 +206,10 @@
 				06B1889B1FD52E72002DAA0A /* HashingProblems.m in Sources */,
 				06B188951FCD3D38002DAA0A /* ArraysProblems.m in Sources */,
 				06B1888C1FC10148002DAA0A /* IBProblems.m in Sources */,
+				060646AC200530E0007967BF /* BitManipulationProblems.m in Sources */,
 				06B1889E1FD5AFAE002DAA0A /* LinkedListsProblems.m in Sources */,
 				06B1888F1FC11333002DAA0A /* ListNode.m in Sources */,
+				060646A91FFF5637007967BF /* RecursionProblems.m in Sources */,
 				06B188921FCD3B5A002DAA0A /* StringsProblems.m in Sources */,
 				06CAECF11FDEF53500FC39AC /* BinarySearchProblems.m in Sources */,
 				06B188701FC10043002DAA0A /* main.m in Sources */,

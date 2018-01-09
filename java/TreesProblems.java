@@ -166,5 +166,37 @@ public int searchInsert(ArrayList<Integer> a, int b) {
 	        return findIndex(a, b, start, mid-1);
 	    }
 	}
+
+public int isValidBST(TreeNode a) {
+	    if (checkBST(a, Integer.MIN_VALUE, Integer.MAX_VALUE)) {
+	        return 1;
+	    }
+	    return 0;
+	}
+	
+	public boolean checkBST(TreeNode a, int min, int max) {    
+	    if (a == null) {
+	        return true;
+	    }
+	    if (a.val < min || a.val > max) {
+	        System.out.println(a.val+", min = "+min+", max = "+max);
+	        return false;
+	    }
+	    return checkBST(a.left, min, a.val) && checkBST(a.right, a.val, max);
+	}
+
+public TreeNode getBSTSuccessor(TreeNode node, int b) {
+	TreeNode sNode = null;
+    while (node != null) {
+        if (node.val > b) {
+            sNode = node;
+            node = node.left;
+        } else {
+            node = node.right;
+        }
+    }
+ 
+    return sNode;
+	}
 }
 

@@ -223,6 +223,8 @@
     A = @[@(2), @(3), @(7), @(1), @(3), @(2), @(7)];
     retval = [BitManipulationProblems singleNumber:A];
     NSLog(@"**** countOf1BitsIn: %ld", retval);
+    retval = [BitManipulationProblems reverseBits:2];
+    NSLog(@"**** reverseBits: %ld", retval);
 
 
 }

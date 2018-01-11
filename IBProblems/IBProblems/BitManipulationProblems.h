@@ -12,6 +12,6 @@
 
 + (NSInteger) countOf1BitsIn:(NSUInteger)a;
 + (NSInteger) singleNumber:(NSArray *) A;
-
++ (NSInteger) reverseBits:(NSUInteger) a;
 
 @end

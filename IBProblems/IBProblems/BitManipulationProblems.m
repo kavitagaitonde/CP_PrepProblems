@@ -33,4 +33,19 @@
     return num;
 }
 
++ (NSInteger) reverseBits:(NSUInteger) a  {
+    NSInteger size = sizeof(a)*4;
+    NSInteger output = 0;
+    NSInteger x;
+    NSLog(@"size = %ld", size);
+    for(NSInteger i=0;i<size;i++) {
+        NSLog(@"i = %ld", i);
+        x = (a & (1 << i ));
+        if (x > 0) {
+            output = output | (1 << ((size-1)-i));
+        }
+    }
+    return output;
+}
+
 @end

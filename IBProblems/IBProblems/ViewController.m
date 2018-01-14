@@ -16,7 +16,7 @@
 #import "BinarySearchProblems.h"
 #import "RecursionProblems.h"
 #import "BitManipulationProblems.h"
-
+#import "StackAndQueuesProblems.h"
 
 @interface ViewController ()
 
@@ -218,14 +218,18 @@
 
     
     // BIT MANIPULATION problems
-    retval = [BitManipulationProblems countOf1BitsIn:11];
+    /*retval = [BitManipulationProblems countOf1BitsIn:11];
     NSLog(@"**** countOf1BitsIn: %ld", retval);
     A = @[@(2), @(3), @(7), @(1), @(3), @(2), @(7)];
     retval = [BitManipulationProblems singleNumber:A];
     NSLog(@"**** countOf1BitsIn: %ld", retval);
     retval = [BitManipulationProblems reverseBits:2];
-    NSLog(@"**** reverseBits: %ld", retval);
+    NSLog(@"**** reverseBits: %ld", retval);*/
 
+    // STACKS and QUEUES problems
+    A = @[@"2", @"1", @"+", @"3", @"*"];
+    retval = [StackAndQueuesProblems evalRPN:A];
+    NSLog(@"**** evalRPN: %ld", retval);
 
 }
 

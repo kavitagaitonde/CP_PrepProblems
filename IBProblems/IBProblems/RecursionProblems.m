@@ -249,4 +249,56 @@
     return false;
 }
 
++ (NSArray*) possiblePathsForMatrix:(NSArray*)matrix toRow:(NSInteger)row toCol:(NSInteger)col {
+    NSMutableArray *output = [NSMutableArray array];
+    NSArray *rowArray = [matrix objectAtIndex:row];
+    if (row > [matrix count] || col > [rowArray count]) {
+        NSLog(@"Either row or col exceed the matrix array");
+        return @[];
+    }
+    [self generateAllPossiblePathsForMatrix:matrix output:output current:[NSMutableArray array] row:0 col:0 m:row n:col];
+    return output;
+}
+
++ (void) generateAllPossiblePathsForMatrix:(NSArray*)matrix output:(NSMutableArray*)output current:(NSMutableArray*)current row:(NSInteger) cRow col:(NSInteger)cCol m:(NSInteger)m n:(NSInteger)n {
+    /*if (cRow == m-1 && cCol == n-1) {
+        NSArray *rowArray = [matrix objectAtIndex:cRow];
+        NSInteger currVal = [[rowArray objectAtIndex:cCol] intValue];
+        [current addObject:@(currVal)];
+        [output addObject:[NSMutableArray arrayWithArray:current]];
+        return;
+    }*/
+    
+    NSLog(@"cRow = %ld, cCol = %ld, current = %@", cRow, cCol, current);
+    
+    if (cRow < m  && cCol < n ) {
+        NSArray *rowArray = [matrix objectAtIndex:cRow];
+        NSInteger currVal = [[rowArray objectAtIndex:cCol] intValue];
+        
+        [current addObject:@(currVal)];
+        [self generateAllPossiblePathsForMatrix:matrix output:output current:current row:cRow+1 col:cCol m:m n:n];
+        //[current removeLastObject];
+        [self generateAllPossiblePathsForMatrix:matrix output:output current:current row:cRow col:cCol+1 m:m n:n];
+        if (cRow == m-1 && cCol == n-1) {
+            [output addObject:[NSMutableArray arrayWithArray:current]];
+        }
+
+        [current removeLastObject];
+    }
+    
+}
+
++ (NSInteger) computeGCD:(NSInteger)num1 num2:(NSInteger)num2{
+    if(num1 == num2){
+        return num1;
+    }
+    if (num1 == 0 || num2 == 0) {
+        return 0;
+    }
+    if (num1 < num2) {
+        return [self computeGCD:num1 num2:num2-num1];
+    } else {
+        return [self computeGCD:num1-num2 num2:num2];
+    }
+}
 @end

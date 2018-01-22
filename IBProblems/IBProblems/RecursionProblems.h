@@ -26,5 +26,8 @@
 + (NSMutableArray *) generateAllParenthesis:(NSInteger)n;
 + (void) generateAllParenthesisBacktracking:(NSInteger)n output:(NSMutableArray *)output current:(NSMutableArray*)current start:(NSInteger)start end:(NSInteger)end;
 + (BOOL) areParenthesisValid:(NSArray*)s;
++ (NSArray*) possiblePathsForMatrix:(NSArray*)matrix toRow:(NSInteger)row toCol:(NSInteger)col;
++ (void) generateAllPossiblePathsForMatrix:(NSArray*)matrix output:(NSMutableArray*)output current:(NSMutableArray*)current row:(NSInteger) cRow col:(NSInteger)cCol m:(NSInteger)m n:(NSInteger)n;
++ (NSInteger) computeGCD:(NSInteger)num1 num2:(NSInteger)num2;
 
 @end

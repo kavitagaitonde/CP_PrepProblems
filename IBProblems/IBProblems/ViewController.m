@@ -17,6 +17,8 @@
 #import "RecursionProblems.h"
 #import "BitManipulationProblems.h"
 #import "StackAndQueuesProblems.h"
+#import "GraphProblems.h"
+#import "TreesAndHeaps.h"
 
 @interface ViewController ()
 
@@ -197,7 +199,7 @@
     */
     
     // RECURSION problems
-    /*A = @[@(2), @(1), @(3), @(2),];
+    /*A = @[@(1), @(2), @(3),];
     retArray = [RecursionProblems allPossibleSubsets:[A mutableCopy]];
     NSLog(@"**** allPossibleSubsets: %@", retArray);
     A = @[@(1), @(3), @(2)];
@@ -213,9 +215,17 @@
     NSLog(@"**** allPossibleCombinationsSum: %@", retArray);
     retArray = [RecursionProblems palindromePartitioning:@"aab"];
     NSLog(@"**** palindromePartitioning: %@", retArray);
-     retArray = [RecursionProblems generateAllParenthesis:3];
-     NSLog(@"**** generateAllParenthesis: %@", retArray);*/
-
+    /*retArray = [RecursionProblems generateAllParenthesis:3];
+    NSLog(@"**** generateAllParenthesis: %@", retArray);
+    A = @[@[@(1), @(2), @(3), @(4)],
+          @[@(5), @(6), @(7), @(8)],
+          @[@(9), @(10), @(11), @(12)],
+          @[@(12), @(14), @(15), @(16)]];
+    retArray = [RecursionProblems possiblePathsForMatrix:A toRow:3 toCol:3];
+    NSLog(@"**** generateAllParenthesis: Total paths = %ld", [retArray count]);
+    NSLog(@"**** generateAllParenthesis: %@", retArray);
+    retval = [RecursionProblems computeGCD:6 num2:14];
+    NSLog(@"**** computeGCD : %ld", retval);*/
     
     // BIT MANIPULATION problems
     /*retval = [BitManipulationProblems countOf1BitsIn:11];
@@ -227,10 +237,48 @@
     NSLog(@"**** reverseBits: %ld", retval);*/
 
     // STACKS and QUEUES problems
-    A = @[@"2", @"1", @"+", @"3", @"*"];
+    /*A = @[@"2", @"1", @"+", @"3", @"*"];
     retval = [StackAndQueuesProblems evalRPN:A];
-    NSLog(@"**** evalRPN: %ld", retval);
-
+    NSLog(@"**** evalRPN: %ld", retval);*/
+    
+    // GRAPH problems
+    /*GraphNode *g1 = [[GraphNode alloc]initWithData:1];
+    GraphNode *g2 = [[GraphNode alloc]initWithData:2];
+    GraphNode *g3 = [[GraphNode alloc]initWithData:3];
+    GraphNode *g4 = [[GraphNode alloc]initWithData:4];
+    [g1 addNeighbor:g2];
+    [g1 addNeighbor:g4];
+    [g2 addNeighbor:g1];
+    [g2 addNeighbor:g3];
+    [g3 addNeighbor:g2];
+    [g3 addNeighbor:g4];
+    [g4 addNeighbor:g3];
+    [g4 addNeighbor:g1];
+    NSLog(@"**** cloneGraph: input");
+    [GraphProblems bfsTraversal:g1];
+    GraphNode *clonedGraph = [GraphProblems cloneGraph:g1];
+    NSLog(@"**** cloneGraph: output");
+    [GraphProblems bfsTraversal:clonedGraph];
+    A = @[@(-1), @(0)]; //@[@(-1), @(0), @(0)]; @[@(-1), @(0), @(0), @(0), @(3)];
+    retval = [GraphProblems largestDistance:[A mutableCopy]];
+    NSLog(@"**** largestDistance: %ld", retval);*/
+    A = @[@(1), @(2)];
+    B = @[@(2), @(3)];
+    retval = [GraphProblems canFinishCourseWithPrerequisites:3 :A :B];
+    NSLog(@"**** largestDistance: %ld", retval);
+    
+    // TREES AND HEAPS problems
+    /*TreeNode *g1 = [[TreeNode alloc]initWithData:1];
+    TreeNode *g2 = [[TreeNode alloc]initWithData:2];
+    TreeNode *g3 = [[TreeNode alloc]initWithData:3];
+    TreeNode *g4 = [[TreeNode alloc]initWithData:4];
+    TreeNode *g5 = [[TreeNode alloc]initWithData:5];
+    [g1 setLeft:g2];
+    [g1 setRight:g3];
+    [g2 setLeft:g4];
+    [g2 setRight:g5];
+    retval = [TreesAndHeaps diameter:g1];
+    NSLog(@"**** diameter of tree: %ld", retval);*/
 }
 
 @end

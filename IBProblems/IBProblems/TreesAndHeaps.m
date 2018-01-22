@@ -247,4 +247,90 @@
     
 }
 
++ (NSMutableArray *) levelOrder:(TreeNode *) A  {
+    NSMutableArray *output = [NSMutableArray array];
+    //[self levelOrderTraversalDFS:A level:1 output:output];
+    NSMutableArray *queue = [NSMutableArray array];
+    if (A != nil) {
+        [queue addObject:A];
+    }
+    [self levelOrderTraversalBFS:queue level:1 output:output];
+    return output;
+}
+
++ (void) levelOrderTraversalDFS:(TreeNode *) A  level:(NSInteger)level output:(NSMutableArray*)output {
+    if (A == nil) {
+        return;
+    }
+    
+    if([output count] < level) {
+        NSMutableArray *arr = [NSMutableArray array];
+        [arr addObject:A];
+        [output addObject:arr];
+    }else {
+        NSMutableArray *arr = [output objectAtIndex:level-1];
+        [arr addObject:A];
+        [output replaceObjectAtIndex:level-1 withObject:arr];
+    }
+    
+    if (A.left != nil) {
+        [self levelOrderTraversalDFS:A.left level:level+1 output:output];
+    }
+    if (A.right != nil) {
+        [self levelOrderTraversalDFS:A.right level:level+1 output:output];
+    }
+}
+
++(void) levelOrderTraversalBFS:(NSMutableArray*)queue  level:(NSInteger)level output:(NSMutableArray*)output {
+    NSMutableArray *newQueue = [NSMutableArray array];
+    NSMutableArray *levelNodes = [NSMutableArray array];
+    while ([queue count] > 0) {
+        TreeNode *node = [queue objectAtIndex:0];
+        [queue removeObjectAtIndex:0];
+        [levelNodes addObject:node];
+        if (node.left != nil) {
+            [newQueue addObject:node.left];
+        }
+        if (node.right != nil) {
+            [newQueue addObject:node.right];
+        }
+    }
+    if ([levelNodes count] > 0) {
+        [output addObject:levelNodes];
+    }
+    if ([newQueue count] > 0) {
+        queue = newQueue;
+        [self levelOrderTraversalBFS:queue level:level+1 output:output];
+    }
+}
+
++ (NSInteger) diameter:(TreeNode*)node {
+    if (node == nil) {
+        return 0;
+    }
+    
+    NSInteger leftHeight = [self height:node.left];
+    NSInteger rightHeight = [self height:node.right];
+    NSInteger currD = leftHeight + rightHeight + 1;
+    
+    NSInteger leftD = [self diameter:node.left];
+    NSInteger rightD = [self diameter:node.right];
+    NSInteger maxDChild = MAX(leftD, rightD);
+    
+    return MAX(currD, maxDChild);
+
+}
+
++ (NSInteger) height:(TreeNode*)node {
+    if (node == nil) {
+        return 0;
+    }
+    
+    NSInteger leftHeight = [self height:node.left];
+    NSInteger rightHeight = [self height:node.right];
+   
+    return MAX(leftHeight, rightHeight) + 1;
+    
+}
+
 @end

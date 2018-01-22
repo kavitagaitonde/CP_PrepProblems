@@ -23,5 +23,8 @@
 + (NSMutableArray *) inorderTraversalIterative:(TreeNode *) A;
 + (NSMutableArray *) preorderTraversalIterative:(TreeNode *) A;
 + (NSMutableArray *) dNums:(NSMutableArray *) A :(NSInteger) B;
++ (NSMutableArray *) levelOrder:(TreeNode *) A;
++ (NSInteger) diameter:(TreeNode*)node;
++ (NSInteger) height:(TreeNode*)node;
 
 @end

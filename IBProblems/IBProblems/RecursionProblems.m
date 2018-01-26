@@ -301,4 +301,33 @@
         return [self computeGCD:num1-num2 num2:num2];
     }
 }
+
++ (NSString *) isPossible:(NSNumber *)a b:(NSNumber *)b c:(NSNumber *)c d:(NSNumber *)d {
+    
+    if([self isPossibleSum:a b:b c:c d:d] == YES) {
+        return @"Yes";
+    }
+    return @"No";
+    
+}
+
++ (BOOL) isPossibleSum:(NSNumber *)a b:(NSNumber *)b c:(NSNumber *)c d:(NSNumber *)d {
+    
+    NSLog(@"a=%@, b=%@, c=%@, d=%@", a, b, c, d);
+    if ([a intValue] == [c intValue] && [b intValue] == [d intValue]) {
+        return YES;
+    }
+    
+    if ([a intValue] > [c intValue] || [b intValue] > [d intValue]) {
+        return NO;
+    }
+    
+    NSInteger sum = [a intValue] + [b intValue];
+    BOOL ret = [self isPossibleSum:@(sum) b:b c:c d:d];
+    if (ret == NO) {
+        ret = [self isPossibleSum:a b:@(sum) c:c d:d];
+    }
+    return ret;
+}
+
 @end

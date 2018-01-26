@@ -43,6 +43,7 @@
     //Invoke problems
     NSInteger input, input1, input2;
     NSArray *A, *B, *retArray;
+    NSMutableArray *mA;
     NSMutableArray *result;
     NSInteger retval;
     ListNode *list1, *list2, *list3;
@@ -261,11 +262,47 @@
     [GraphProblems bfsTraversal:clonedGraph];
     A = @[@(-1), @(0)]; //@[@(-1), @(0), @(0)]; @[@(-1), @(0), @(0), @(0), @(3)];
     retval = [GraphProblems largestDistance:[A mutableCopy]];
-    NSLog(@"**** largestDistance: %ld", retval);*/
+    NSLog(@"**** largestDistance: %ld", retval);
     A = @[@(1), @(2)];
     B = @[@(2), @(3)];
     retval = [GraphProblems canFinishCourseWithPrerequisites:3 :A :B];
     NSLog(@"**** largestDistance: %ld", retval);
+    A = @[@[@(1), @(2)], @[@(0), @(2)], @[@(0), @(1)]];
+    retval = [GraphProblems costForLibrary:A roads:3 cities:3 libCost:2 roadCost:1];
+    NSLog(@"**** costForLibrary: %ld", retval);
+    A = @[@[@(1), @(2)], @[@(0), @(2), @(3)], @[@(0), @(1), @(3)], @[@(1), @(2)], @[@(5)], @[@(4)]];
+    retval = [GraphProblems costForLibrary:A roads:6 cities:6 libCost:2 roadCost:5];
+    NSLog(@"**** costForLibrary: %ld", retval);
+    A = @[@[@(0), @(1)], @[@(2), @(3)], @[@(0), @(4)]];
+    retval = [GraphProblems journeyToTheMoon:A astronauts:5];
+    NSLog(@"**** journeyToTheMoon:A: %ld", retval);*/
+    mA = [NSMutableArray array];
+    NSMutableArray *row = [NSMutableArray array];
+    [row addObject:@"X"];
+    [row addObject:@"X"];
+    [row addObject:@"X"];
+    [row addObject:@"X"];
+    [mA addObject:row];
+    row = [NSMutableArray array];
+    [row addObject:@"X"];
+    [row addObject:@"O"];
+    [row addObject:@"O"];
+    [row addObject:@"X"];
+    [mA addObject:row];
+    row = [NSMutableArray array];
+    [row addObject:@"X"];
+    [row addObject:@"X"];
+    [row addObject:@"O"];
+    [row addObject:@"X"];
+    [mA addObject:row];
+    row = [NSMutableArray array];
+    [row addObject:@"X"];
+    [row addObject:@"O"];
+    [row addObject:@"X"];
+    [row addObject:@"X"];
+    [mA addObject:row];
+    mA = [GraphProblems captureRegionsOnBoard:mA];
+    NSLog(@"**** captureRegionsOnBoard: %@", mA);
     
     // TREES AND HEAPS problems
     /*TreeNode *g1 = [[TreeNode alloc]initWithData:1];

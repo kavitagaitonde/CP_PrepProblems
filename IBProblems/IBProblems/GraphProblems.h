@@ -27,5 +27,8 @@
 + (NSInteger) depth:(GraphNode*)node;
 + (NSInteger) largestDistance:(NSMutableArray *) A;
 + (NSInteger) canFinishCourseWithPrerequisites:(NSInteger) A :(NSArray *) B :(NSArray *) C;
++ (NSInteger) costForLibrary:(NSArray*)cityArray roads:(NSInteger)roads cities:(NSInteger)cities libCost:(NSInteger)libCost roadCost:(NSInteger)roadCost;
++ (NSInteger) journeyToTheMoon:(NSArray*)array astronauts:(NSInteger)n;
++ (NSMutableArray*) captureRegionsOnBoard:(NSMutableArray *) array;
 
 @end

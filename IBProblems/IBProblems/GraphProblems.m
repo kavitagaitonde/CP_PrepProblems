@@ -293,4 +293,143 @@
     return 1;
 }
 
+//2 dimensional array. Index of main array will be a city. Value of each index will be an
+//array of nodes that it is connected to.
+//[ [1,2], //0
+//    [0,2], //1
+//    [0,1]  //2
+//  ]
+// cost of graph = (cost of Vi + cost of Ei-Ei+1)
++ (NSInteger) costForLibrary:(NSArray*)cityArray roads:(NSInteger)roads cities:(NSInteger)cities libCost:(NSInteger)libCost roadCost:(NSInteger)roadCost {
+    if (roadCost >= libCost) {
+        NSLog(@"Library per city...");
+        return libCost*cities;
+    }
+    
+    //means we build 1 library in each connected set of cities. The total cost will be sum of (1 library + n roads) in each component)
+    NSInteger sum = 0;
+    NSMutableArray *visited = [NSMutableArray array];
+    NSInteger i;
+    for (i=0;i<[cityArray count];i++) {
+        [visited addObject:@(0)];
+    }
+    
+    for (i=0;i<[cityArray count];i++) {
+        if ([[visited objectAtIndex:i] intValue] == 1) {
+            //already visited, skip it
+            continue;
+        }
+        [visited replaceObjectAtIndex:i withObject:@(1)];
+        sum = sum + libCost + [self dfs:cityArray city:i roadCost:roadCost visited:visited];
+        
+    }
+    return sum;
+}
+
++(NSInteger) dfs:(NSArray*)cityArray city:(NSInteger)city roadCost:(NSInteger)roadCost visited:(NSMutableArray*)visited{
+    NSArray *cityNeighbors = [cityArray objectAtIndex:city];
+    NSInteger sum = 0, i, neighbor;
+    for (i=0;i<[cityNeighbors count];i++) {
+        neighbor = [[cityNeighbors objectAtIndex:i]intValue];
+        if ([[visited objectAtIndex:neighbor] intValue] == 1) {
+            //already visited, skip it
+            continue;
+        }
+        [visited replaceObjectAtIndex:neighbor withObject:@(1)];
+        sum = sum + roadCost + [self dfs:cityArray city:neighbor roadCost:roadCost visited:visited];
+    }
+    return sum;
+}
+
++(NSInteger) journeyToTheMoon:(NSArray*)array astronauts:(NSInteger)n {
+    NSInteger i, j;
+    NSMutableArray *neighborSets = [NSMutableArray array];
+    //setup neighbors
+    for (i=0;i<[array count];i++) {
+        NSArray *a = [array objectAtIndex:i];
+        for (j=0;j<[neighborSets count];j++) {
+            NSMutableSet *set = [neighborSets objectAtIndex:j];
+            if ([set containsObject:[a objectAtIndex:0]]) {
+                [set addObject:[a objectAtIndex:1]];
+                break;
+            } else if ([set containsObject:[a objectAtIndex:1]]) {
+                [set addObject:[a objectAtIndex:1]];
+                break;
+            }
+        }
+        if (j == [neighborSets count]) {
+            //create new set and add
+            NSMutableSet *set = [NSMutableSet set];
+            [set addObjectsFromArray:a];
+            [neighborSets addObject:set];
+        }
+    }
+    NSInteger result = 0, sum = 0;
+    for (i=0;i<[neighborSets count];i++) {
+        NSMutableSet *set = [neighborSets objectAtIndex:i];
+        result += sum*[set count];
+        sum += [set count];
+    }
+    return result;
+}
+
++ (NSMutableArray*) captureRegionsOnBoard:(NSMutableArray *) array {
+    NSInteger i, j;
+    
+    //replace all O's to -
+    for (i=0;i<[array count];i++) {
+        NSMutableArray *row = [array objectAtIndex:i];
+        for (j=0;j<[array count];j++) {
+            if ([[row objectAtIndex:j] isEqualToString:@"O"]) {
+                [row replaceObjectAtIndex:j withObject:@"-"];
+            }
+        }
+    }
+    
+    //replace all -'s on the edges to O
+    for(i=0;i<[array count];i++) {
+        [self dfsRegionReplace:0 col:i array:array prevStr:@"-" newStr:@"O"];
+    }
+    for(i=0;i<[array count];i++) {
+        [self dfsRegionReplace:[array count]-1 col:i array:array prevStr:@"-" newStr:@"O"];
+    }
+    for(i=0;i<[array count];i++) {
+        [self dfsRegionReplace:i col:0 array:array prevStr:@"-" newStr:@"O"];
+    }
+    for(i=0;i<[array count];i++) {
+        [self dfsRegionReplace:i col:[array count]-1 array:array prevStr:@"-" newStr:@"O"];
+    }
+    
+    //replace all remaining -'s to X
+    for (i=0;i<[array count];i++) {
+        NSMutableArray *row = [array objectAtIndex:i];
+        for (NSInteger j=0;j<[array count];j++) {
+            if ([[row objectAtIndex:j] isEqualToString:@"-"]) {
+                [row replaceObjectAtIndex:j withObject:@"X"];
+            }
+        }
+    }
+    
+    return array;
+}
+
++ (void) dfsRegionReplace:(NSInteger)row col:(NSInteger)col array:(NSMutableArray*)array prevStr:(NSString*)prevStr newStr:(NSString*)newStr{
+    if (row < 0 || row >= [array count] || col <0 || col >= [array count]) {
+        return;
+    }
+    
+    NSMutableArray *rowArray = [array objectAtIndex:row];
+    if (![[rowArray objectAtIndex:col] isEqualToString:prevStr]) {
+        return;
+    }
+    
+    [rowArray replaceObjectAtIndex:col withObject:newStr];
+    
+    [self dfsRegionReplace:row-1 col:col array:array prevStr:prevStr newStr:newStr];
+    [self dfsRegionReplace:row+1 col:col array:array prevStr:prevStr newStr:newStr];
+    [self dfsRegionReplace:row col:col-1 array:array prevStr:prevStr newStr:newStr];
+    [self dfsRegionReplace:row col:col+1 array:array prevStr:prevStr newStr:newStr];
+    
+}
+
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "TreesAndHeaps.h"
+#import "ListNode.h"
 
 @implementation TreeNode
 
@@ -331,6 +332,36 @@
    
     return MAX(leftHeight, rightHeight) + 1;
     
+}
+
++ (TreeNode*) convertSortedListToBST:(ListNode*)list {
+    if (list == nil) {
+        return nil;
+    }
+    NSInteger count = 0;
+    ListNode* start = list;
+    while (list != nil) {
+        list = list.next;
+        count++;
+    }
+    list = start;
+    ListNode* prev = list;
+    NSInteger i = 0;
+    while (i < (count/2)) {
+        prev = list;
+        list = list.next;
+        i++;
+    }
+    prev.next = nil;
+    TreeNode *root = [[TreeNode alloc] initWithData:list.data];
+    if (count == 1) {
+        return root;
+    }
+    ListNode* left = start;
+    ListNode* right = list.next;
+    root.left = [self convertSortedListToBST:left];
+    root.right = [self convertSortedListToBST:right];
+    return root;
 }
 
 @end

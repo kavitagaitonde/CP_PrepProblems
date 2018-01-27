@@ -432,4 +432,71 @@
     
 }
 
++ (BOOL) doesWordExist:(NSMutableArray*)array word:(NSString*)word {
+    for (NSInteger i=0;i<[array count];i++) {
+        NSString *rowStr = [array objectAtIndex:i];
+        for (NSInteger j=0;j<[rowStr length];j++) {
+            if ([self wordSearch:i col:j array:array word:word wordIndex:0]) {
+                return YES;
+            }
+        }
+    }
+    return NO;
+}
+
++ (BOOL) wordSearch:(NSInteger)row col:(NSInteger)col array:(NSMutableArray*)array word:(NSString*)word wordIndex:(NSInteger)wordIndex{
+    if (wordIndex == [word length]) {
+        return YES;
+    }
+    if (row < 0 || row >= [array count] || col <0 ) {
+        return NO;
+    }
+    NSString *rowStr = [array objectAtIndex:row];
+    if (col >= [rowStr length]) {
+        return NO;
+    }
+    
+    if ([rowStr characterAtIndex:col] != [word characterAtIndex:wordIndex]) {
+        return NO;
+    }
+    //found match, look for next match
+    return ([self wordSearch:row-1 col:col array:array word:word wordIndex:wordIndex+1] ||
+            [self wordSearch:row+1 col:col array:array word:word wordIndex:wordIndex+1] ||
+            [self wordSearch:row col:col-1 array:array word:word wordIndex:wordIndex+1] ||
+            [self wordSearch:row col:col+1 array:array word:word wordIndex:wordIndex+1]);
+    
+}
+
++(NSInteger) countBlackShapes:(NSMutableArray *) array  {
+    NSInteger count = 0;
+    for (NSInteger i=0;i<[array count];i++) {
+        NSMutableArray *rowArray = [array objectAtIndex:i];
+        for (NSInteger j=0;j<[rowArray count];j++) {
+            count+=[self adjacentBlackShapes:i col:j array:array];
+        }
+    }
+    return count;
+}
+
++ (NSInteger) adjacentBlackShapes:(NSInteger)row col:(NSInteger)col array:(NSMutableArray*)array {
+    if (row < 0 || row >= [array count] || col <0 ) {
+        return 0;
+    }
+    NSMutableArray *rowArray = [array objectAtIndex:row];
+    if (col >= [rowArray count]) {
+        return 0;
+    }
+    if (![[rowArray objectAtIndex:col] isEqualToString:@"X"]) {
+        return 0;
+    }
+    
+    //found match, look for adjacent match
+    [rowArray replaceObjectAtIndex:col withObject:@"-"];
+    [self adjacentBlackShapes:row-1 col:col array:array];
+    [self adjacentBlackShapes:row+1 col:col array:array];
+    [self adjacentBlackShapes:row col:col-1 array:array];
+    [self adjacentBlackShapes:row col:col+1 array:array];
+    return 1;
+    
+}
 @end

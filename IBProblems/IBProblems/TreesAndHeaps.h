@@ -26,5 +26,6 @@
 + (NSMutableArray *) levelOrder:(TreeNode *) A;
 + (NSInteger) diameter:(TreeNode*)node;
 + (NSInteger) height:(TreeNode*)node;
++ (TreeNode*) convertSortedListToBST:(ListNode*)list;
 
 @end

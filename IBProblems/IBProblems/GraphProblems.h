@@ -30,5 +30,7 @@
 + (NSInteger) costForLibrary:(NSArray*)cityArray roads:(NSInteger)roads cities:(NSInteger)cities libCost:(NSInteger)libCost roadCost:(NSInteger)roadCost;
 + (NSInteger) journeyToTheMoon:(NSArray*)array astronauts:(NSInteger)n;
 + (NSMutableArray*) captureRegionsOnBoard:(NSMutableArray *) array;
++ (BOOL) doesWordExist:(NSMutableArray*)array word:(NSString*)word;
++(NSInteger) countBlackShapes:(NSMutableArray *) array;
 
 @end

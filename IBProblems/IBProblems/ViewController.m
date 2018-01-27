@@ -50,7 +50,7 @@
     BOOL retBool;
     NSString *retString;
     NSString *str1;
-    
+    TreeNode *retTreeNode;
     /*
     // ************ CHECKPOINT 2 PROBLEMS **************
     
@@ -275,7 +275,8 @@
     NSLog(@"**** costForLibrary: %ld", retval);
     A = @[@[@(0), @(1)], @[@(2), @(3)], @[@(0), @(4)]];
     retval = [GraphProblems journeyToTheMoon:A astronauts:5];
-    NSLog(@"**** journeyToTheMoon:A: %ld", retval);*/
+    NSLog(@"**** journeyToTheMoon:A: %ld", retval);
+     
     mA = [NSMutableArray array];
     NSMutableArray *row = [NSMutableArray array];
     [row addObject:@"X"];
@@ -304,6 +305,58 @@
     mA = [GraphProblems captureRegionsOnBoard:mA];
     NSLog(@"**** captureRegionsOnBoard: %@", mA);
     
+    mA = [NSMutableArray array];
+    [mA addObject:@"ABCE"];
+    [mA addObject:@"SFCS"];
+    [mA addObject:@"ADEE"];
+    str1 = @"SEE";
+    retBool = [GraphProblems doesWordExist:mA word:str1];
+    NSLog(@"**** doesWordExist: %@ : %@", str1, retBool?@"YES":@"NO");
+    
+    str1 = @"ABCCED";
+    retBool = [GraphProblems doesWordExist:mA word:str1];
+    NSLog(@"**** doesWordExist: %@ : %@", str1, retBool?@"YES":@"NO");
+    str1 = @"ABCB";
+    retBool = [GraphProblems doesWordExist:mA word:str1];
+    NSLog(@"**** doesWordExist: %@ : %@", str1, retBool?@"YES":@"NO");
+    str1 = @"ABFSAB";
+    retBool = [GraphProblems doesWordExist:mA word:str1];
+    NSLog(@"**** doesWordExist: %@ : %@", str1, retBool?@"YES":@"NO");
+    str1 = @"ABCD";
+    retBool = [GraphProblems doesWordExist:mA word:str1];
+    NSLog(@"**** doesWordExist: %@ : %@", str1, retBool?@"YES":@"NO");
+    
+    mA = [NSMutableArray array];
+    NSMutableArray *row = [NSMutableArray array];
+    [row addObject:@"O"];
+    [row addObject:@"O"];
+    [row addObject:@"O"];
+    [row addObject:@"X"];
+    [row addObject:@"O"];
+    [row addObject:@"O"];
+    [row addObject:@"O"];
+    [mA addObject:row];
+    row = [NSMutableArray array];
+    [row addObject:@"O"];
+    [row addObject:@"O"];
+    [row addObject:@"X"];
+    [row addObject:@"X"];
+    [row addObject:@"O"];
+    [row addObject:@"X"];
+    [row addObject:@"O"];
+    [mA addObject:row];
+    row = [NSMutableArray array];
+    [row addObject:@"O"];
+    [row addObject:@"X"];
+    [row addObject:@"O"];
+    [row addObject:@"O"];
+    [row addObject:@"O"];
+    [row addObject:@"X"];
+    [row addObject:@"O"];
+    [mA addObject:row];
+    retval = [GraphProblems countBlackShapes:mA];
+    NSLog(@"**** countBlackShapes: %ld", retval);*/
+    
     // TREES AND HEAPS problems
     /*TreeNode *g1 = [[TreeNode alloc]initWithData:1];
     TreeNode *g2 = [[TreeNode alloc]initWithData:2];
@@ -316,6 +369,10 @@
     [g2 setRight:g5];
     retval = [TreesAndHeaps diameter:g1];
     NSLog(@"**** diameter of tree: %ld", retval);*/
+    A = @[@(1), @(2), @(3)];
+    list1 = [ListNode initWithArray:A];
+    retTreeNode = [TreesAndHeaps convertSortedListToBST:list1];
+    NSLog(@"**** convertSortedListToBST: %@", [TreesAndHeaps inorderTraversalIterative:retTreeNode]);
 }
 
 @end

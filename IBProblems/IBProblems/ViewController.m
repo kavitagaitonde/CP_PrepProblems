@@ -19,6 +19,7 @@
 #import "StackAndQueuesProblems.h"
 #import "GraphProblems.h"
 #import "TreesAndHeaps.h"
+#import "DynamicProgrammingProblems.h"
 
 @interface ViewController ()
 
@@ -43,7 +44,7 @@
     //Invoke problems
     NSInteger input, input1, input2;
     NSArray *A, *B, *retArray;
-    NSMutableArray *mA;
+    NSMutableArray *mA, *row;
     NSMutableArray *result;
     NSInteger retval;
     ListNode *list1, *list2, *list3;
@@ -278,7 +279,7 @@
     NSLog(@"**** journeyToTheMoon:A: %ld", retval);
      
     mA = [NSMutableArray array];
-    NSMutableArray *row = [NSMutableArray array];
+    row = [NSMutableArray array];
     [row addObject:@"X"];
     [row addObject:@"X"];
     [row addObject:@"X"];
@@ -327,7 +328,7 @@
     NSLog(@"**** doesWordExist: %@ : %@", str1, retBool?@"YES":@"NO");
     
     mA = [NSMutableArray array];
-    NSMutableArray *row = [NSMutableArray array];
+    row = [NSMutableArray array];
     [row addObject:@"O"];
     [row addObject:@"O"];
     [row addObject:@"O"];
@@ -368,11 +369,55 @@
     [g2 setLeft:g4];
     [g2 setRight:g5];
     retval = [TreesAndHeaps diameter:g1];
-    NSLog(@"**** diameter of tree: %ld", retval);*/
+    NSLog(@"**** diameter of tree: %ld", retval);
     A = @[@(1), @(2), @(3)];
     list1 = [ListNode initWithArray:A];
     retTreeNode = [TreesAndHeaps convertSortedListToBST:list1];
-    NSLog(@"**** convertSortedListToBST: %@", [TreesAndHeaps inorderTraversalIterative:retTreeNode]);
+    NSLog(@"**** convertSortedListToBST: %@", [TreesAndHeaps inorderTraversalIterative:retTreeNode]);*/
+    
+    // DYNAMIC PROGRAMMING problems
+    /*input = 3;
+    retval = [DynamicProgrammingProblems climbStairs:input];
+    NSLog(@"**** Total number of ways to climb %ld: %ld", input, retval);
+    mA = [NSMutableArray array];
+    row = [NSMutableArray array];
+    [row addObject:@"1"];
+    [row addObject:@"3"];
+    [row addObject:@"2"];
+    [mA addObject:row];
+    row = [NSMutableArray array];
+    [row addObject:@"4"];
+    [row addObject:@"3"];
+    [row addObject:@"1"];
+    [mA addObject:row];
+    row = [NSMutableArray array];
+    [row addObject:@"5"];
+    [row addObject:@"6"];
+    [row addObject:@"1"];
+    [mA addObject:row];
+    retval = [DynamicProgrammingProblems minPathSum:mA];
+    NSLog(@"**** minPathSum: %ld", retval);
+    mA = [NSMutableArray array];
+    row = [NSMutableArray array];
+    [row addObject:@"0"];
+    [row addObject:@"0"];
+    [row addObject:@"0"];
+    [mA addObject:row];
+    row = [NSMutableArray array];
+    [row addObject:@"0"];
+    [row addObject:@"1"];
+    [row addObject:@"0"];
+    [mA addObject:row];
+    row = [NSMutableArray array];
+    [row addObject:@"0"];
+    [row addObject:@"0"];
+    [row addObject:@"0"];
+    [mA addObject:row];
+    retval = [DynamicProgrammingProblems uniquePathsWithObstacles:mA];
+    NSLog(@"**** uniquePathsWithObstacles: %ld", retval);*/
+    A = @[@(3), @(10), @(2), @(1), @(20)];
+    retval = [DynamicProgrammingProblems longestIncreasingSubsequence:A];
+    NSLog(@"**** longestIncreasingSubsequence: %ld", retval);
 }
 
 @end

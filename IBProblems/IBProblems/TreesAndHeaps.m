@@ -80,7 +80,7 @@
 
 + (NSMutableArray *) dNums:(NSMutableArray *) A :(NSInteger) B  {
     if (A == nil || [A count] == 0 || [A count] < B) {
-        return @[];
+        return [NSMutableArray array];
     }
     
     

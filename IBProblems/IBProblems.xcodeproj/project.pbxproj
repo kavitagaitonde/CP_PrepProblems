@@ -11,6 +11,7 @@
 		060646AC200530E0007967BF /* BitManipulationProblems.m in Sources */ = {isa = PBXBuildFile; fileRef = 060646AB200530E0007967BF /* BitManipulationProblems.m */; };
 		060646AF2007492F007967BF /* StackAndQueuesProblems.m in Sources */ = {isa = PBXBuildFile; fileRef = 060646AE2007492F007967BF /* StackAndQueuesProblems.m */; };
 		060646B2201407B9007967BF /* GraphProblems.m in Sources */ = {isa = PBXBuildFile; fileRef = 060646B1201407B9007967BF /* GraphProblems.m */; };
+		06A24F4A201D175500909520 /* DynamicProgrammingProblems.m in Sources */ = {isa = PBXBuildFile; fileRef = 06A24F49201D175500909520 /* DynamicProgrammingProblems.m */; };
 		06B188701FC10043002DAA0A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B1886F1FC10043002DAA0A /* main.m */; };
 		06B188731FC10043002DAA0A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B188721FC10043002DAA0A /* AppDelegate.m */; };
 		06B188761FC10043002DAA0A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B188751FC10043002DAA0A /* ViewController.m */; };
@@ -36,6 +37,8 @@
 		060646AE2007492F007967BF /* StackAndQueuesProblems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StackAndQueuesProblems.m; sourceTree = "<group>"; };
 		060646B0201407B8007967BF /* GraphProblems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphProblems.h; sourceTree = "<group>"; };
 		060646B1201407B9007967BF /* GraphProblems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphProblems.m; sourceTree = "<group>"; };
+		06A24F48201D175500909520 /* DynamicProgrammingProblems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicProgrammingProblems.h; sourceTree = "<group>"; };
+		06A24F49201D175500909520 /* DynamicProgrammingProblems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DynamicProgrammingProblems.m; sourceTree = "<group>"; };
 		06B1886B1FC10043002DAA0A /* IBProblems.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IBProblems.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06B1886F1FC10043002DAA0A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		06B188711FC10043002DAA0A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -102,6 +105,8 @@
 				06CAECF01FDEF53500FC39AC /* BinarySearchProblems.m */,
 				060646AA200530E0007967BF /* BitManipulationProblems.h */,
 				060646AB200530E0007967BF /* BitManipulationProblems.m */,
+				06A24F48201D175500909520 /* DynamicProgrammingProblems.h */,
+				06A24F49201D175500909520 /* DynamicProgrammingProblems.m */,
 				060646B0201407B8007967BF /* GraphProblems.h */,
 				060646B1201407B9007967BF /* GraphProblems.m */,
 				06B188991FD52E72002DAA0A /* HashingProblems.h */,
@@ -213,6 +218,7 @@
 				06B188761FC10043002DAA0A /* ViewController.m in Sources */,
 				06CAECF41FE035BA00FC39AC /* TreesAndHeaps.m in Sources */,
 				060646AF2007492F007967BF /* StackAndQueuesProblems.m in Sources */,
+				06A24F4A201D175500909520 /* DynamicProgrammingProblems.m in Sources */,
 				06B188731FC10043002DAA0A /* AppDelegate.m in Sources */,
 				06B1889B1FD52E72002DAA0A /* HashingProblems.m in Sources */,
 				06B188951FCD3D38002DAA0A /* ArraysProblems.m in Sources */,

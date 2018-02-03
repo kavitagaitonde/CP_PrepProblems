@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TreesAndHeaps.h"
 
 @interface DynamicProgrammingProblems : NSObject
 
@@ -14,5 +15,10 @@
 + (NSInteger) minPathSum:(NSMutableArray *) A;
 + (NSInteger) uniquePathsWithObstacles:(NSMutableArray *) A;
 + (NSInteger) longestIncreasingSubsequence:(NSArray *) A;
++ (NSInteger) maxProduct:(NSArray *) A;
++ (NSInteger) maxPathSum:(TreeNode *) A;
++ (NSInteger) maxProfit:(NSArray *) A;
++ (NSInteger) minSumPathTriangle:(NSArray*)A;
++ (NSInteger) longestSubsequenceLength:(NSArray *) A;
 
 @end

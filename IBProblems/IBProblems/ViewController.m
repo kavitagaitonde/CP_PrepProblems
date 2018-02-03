@@ -46,6 +46,7 @@
     NSArray *A, *B, *retArray;
     NSMutableArray *mA, *row;
     NSMutableArray *result;
+    NSMutableSet *retSet;
     NSInteger retval;
     ListNode *list1, *list2, *list3;
     BOOL retBool;
@@ -109,6 +110,11 @@
  
     retBool = [StringsProblems isSubsequence:@"euni" inString:@"sequence"];
     NSLog(@"**** isSubsequence: %@", retBool?@"YES":@"NO");
+    
+    str1 = @"aaa";
+    retSet = [NSMutableSet set];
+    [StringsProblems allSubsequences:str1 output:retSet];
+    NSLog(@"**** allSubsequences of %@ : %@", str1, retSet);
     */
     
     // LINKEDLIST problems
@@ -414,10 +420,40 @@
     [row addObject:@"0"];
     [mA addObject:row];
     retval = [DynamicProgrammingProblems uniquePathsWithObstacles:mA];
-    NSLog(@"**** uniquePathsWithObstacles: %ld", retval);*/
+    NSLog(@"**** uniquePathsWithObstacles: %ld", retval);
     A = @[@(3), @(10), @(2), @(1), @(20)];
     retval = [DynamicProgrammingProblems longestIncreasingSubsequence:A];
     NSLog(@"**** longestIncreasingSubsequence: %ld", retval);
+    A = @[@(2), @(3), @(-2), @(4)];
+    retval = [DynamicProgrammingProblems maxProduct:A];
+    NSLog(@"**** maxProduct: %ld", retval);
+    A = @[@(1), @(2), @(6), @(80), @(100)];
+    retval = [DynamicProgrammingProblems maxProfit:A];
+    NSLog(@"**** maxProfit: %ld", retval);
+    mA = [NSMutableArray array];
+    row = [NSMutableArray array];
+    [row addObject:@"2"];
+    [mA addObject:row];
+    row = [NSMutableArray array];
+    [row addObject:@"3"];
+    [row addObject:@"4"];
+    [mA addObject:row];
+    row = [NSMutableArray array];
+    [row addObject:@"6"];
+    [row addObject:@"5"];
+    [row addObject:@"7"];
+    [mA addObject:row];
+    row = [NSMutableArray array];
+    [row addObject:@"4"];
+    [row addObject:@"1"];
+    [row addObject:@"8"];
+    [row addObject:@"3"];
+    [mA addObject:row];
+    retval = [DynamicProgrammingProblems minSumPathTriangle:mA];
+    NSLog(@"**** minSumPathTriangle: %ld", retval);*/
+    A = @[@(1), @(3), @(5), @(6), @(4), @(8), @(4), @(3), @(2), @(1)];
+    retval = [DynamicProgrammingProblems longestSubsequenceLength:A];
+    NSLog(@"**** longestSubsequenceLength: %ld", retval);
 }
 
 @end

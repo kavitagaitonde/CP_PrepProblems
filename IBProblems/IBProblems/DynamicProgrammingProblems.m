@@ -162,4 +162,141 @@
     return memoVal;
 }
 
+
+//Find the contiguous subarray within an array (containing at least one number) which has the largest product.
+//Return an integer corresponding to the maximum product possible.
++ (NSInteger) maxProduct:(NSArray *) A  {
+    if ([A count] == 0) {
+        return 0;
+    }
+    NSInteger currProduct = [[A objectAtIndex:0] intValue];
+    NSInteger maxProduct = currProduct;
+    NSInteger currVal = 0;
+    for(NSInteger i=1;i<[A count];i++) {
+        currVal = [[A objectAtIndex:i] intValue];
+        currProduct = MAX(currVal, currProduct*currVal);
+        maxProduct = MAX( maxProduct, currProduct);
+    }
+    return maxProduct;
+}
+
++ (NSInteger) maxPathSum:(TreeNode *) A  {
+    if (A == nil) {
+        return 0;
+    }
+    return [self computeMaxPathSum:(TreeNode *) A  max:@(0)];
+}
+
++ (NSInteger) computeMaxPathSum:(TreeNode *) A  max:(NSNumber*)max{
+    if (A == nil) {
+        return 0;
+    }
+    NSInteger left = [self computeMaxPathSum:A.left  max:max];
+    NSInteger right = [self computeMaxPathSum:A.right  max:max];
+    NSInteger oneChildMax = MAX(MAX(left, right) + A.val, A.val);
+    NSInteger totalMax = MAX(oneChildMax, left+right+A.val);
+    NSLog(@"left=%ld, right=%ld, oneChild=%ld, total=%ld, max=%d", left, right, oneChildMax, totalMax, [max intValue]);
+    max = @(MAX(totalMax, [max intValue]));
+    return oneChildMax;
+}
+
++ (NSInteger) maxProfit:(NSArray *) A  {
+    if ([A count] <2) {
+        return 0;
+    }
+    NSInteger buyValue = [[A objectAtIndex:0] intValue];
+    NSInteger maxProfit = 0;
+    NSInteger currProfit = 0;
+    for (NSInteger i=1;i<[A count];i++) {
+        if(buyValue > [[A objectAtIndex:i] intValue]) {
+            buyValue = [[A objectAtIndex:i] intValue];
+        }
+        currProfit = [[A objectAtIndex:i] intValue] - buyValue;
+        if(currProfit > maxProfit) {
+            maxProfit = currProfit;
+        }
+    }
+    return maxProfit;
+}
+
+//Min Sum Path Triange: Given a triangle, find the minimum path sum from top to bottom. Each step you may move to adjacent numbers on the row below.
++ (NSInteger) minSumPathTriangle:(NSArray*)A {
+    //Length of each row in A is one greater than the previous one
+    //use the bottom up approach.
+    NSArray *arr = nil;
+    for (NSInteger i=[A count]-1;i>=0;i--) {
+        arr = [self minSumPathForRow:[A objectAtIndex:i] minPathSum:arr];
+    }
+    return [[arr objectAtIndex:0] intValue];
+    
+}
+
++ (NSArray*) minSumPathForRow:(NSArray*)rowA minPathSum:(NSArray*)minPathSum{
+    NSMutableArray *array = [NSMutableArray array];
+    //process each element in row to find the min path sum of each element
+    for (NSInteger i=0;i<[rowA count];i++) {
+        if (minPathSum == nil || [minPathSum count] < [rowA count]) {
+            [array addObject:[rowA objectAtIndex:i]];
+        } else {
+            NSInteger min = MIN([[minPathSum objectAtIndex:i] intValue], [[minPathSum objectAtIndex:i+1] intValue]);
+            [array addObject:@(min+[[rowA objectAtIndex:i] intValue])];
+        }
+    }
+    return array;
+}
+
+//Length of Longest Subsequence - Given an array of integers, find the length of longest subsequence which is first increasing then decreasing.
++ (NSInteger) longestSubsequenceLength:(NSArray *) A  {
+    NSMutableArray *inc = [NSMutableArray arrayWithCapacity:[A count]];
+    NSMutableArray *dec = [NSMutableArray arrayWithCapacity:[A count]];
+    NSInteger targetVal = 0, currVal = 0;
+    for(NSInteger i=0;i<[A count];i++) {
+        [inc addObject:@(1)];
+        [dec addObject:@(1)];
+    }
+    
+    //increasing
+    for(NSInteger i=1;i<[A count];i++) {
+        targetVal = [[A objectAtIndex:i] intValue];
+        for(NSInteger j=0;j<i;j++) {
+            currVal = [[A objectAtIndex:j] intValue];
+            if (currVal < targetVal && [[inc objectAtIndex:i]intValue] < [[inc objectAtIndex:j]intValue]+1) {
+                [inc replaceObjectAtIndex:i withObject:@([[inc objectAtIndex:j]intValue]+1)];
+            }
+        }
+    }
+    //decreasing
+    for(NSInteger i=[A count]-2;i>=0;i--) {
+        targetVal = [[A objectAtIndex:i] intValue];
+        for(NSInteger j=[A count]-1;j>i;j--) {
+            currVal = [[A objectAtIndex:j] intValue];
+            if (currVal < targetVal && [[dec objectAtIndex:i]intValue] < [[dec objectAtIndex:j]intValue]+1) {
+                [dec replaceObjectAtIndex:i withObject:@([[dec objectAtIndex:j]intValue]+1)];
+            }
+        }
+    }
+    //NSLog(@"inc = %@", inc);
+    //NSLog(@"dec = %@", dec);
+    //max
+    NSInteger max = 0, currMax = 0;
+    for(NSInteger i=0;i<[A count];i++) {
+        currMax = [[inc objectAtIndex:i]intValue] + [[dec objectAtIndex:i]intValue] -1;
+        max = MAX(currMax, max);
+    }
+    
+    return max;
+    
+}
+
+/*
+//2Xn matrix
++(NSInteger) maxSumWithoutAdjacentElements:(NSArray *)A {
+    
+}
+
++(NSInteger) findMax:(NSArray *)A row:(NSInteger)row col:(NSInteger)col max:(NSInteger)max{
+    
+}
+*/
+
 @end

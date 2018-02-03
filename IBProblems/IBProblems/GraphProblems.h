@@ -32,5 +32,5 @@
 + (NSMutableArray*) captureRegionsOnBoard:(NSMutableArray *) array;
 + (BOOL) doesWordExist:(NSMutableArray*)array word:(NSString*)word;
 +(NSInteger) countBlackShapes:(NSMutableArray *) array;
-
++ (NSArray *) getTheGroups:(NSNumber *)n queryType:(NSArray *)queryType students1:(NSArray *)students1 students2:(NSArray *)students2;
 @end

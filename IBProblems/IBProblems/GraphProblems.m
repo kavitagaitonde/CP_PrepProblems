@@ -499,4 +499,69 @@
     return 1;
     
 }
+
+//HR problem: Get the groups
++ (NSArray *) getTheGroups:(NSNumber *)n queryType:(NSArray *)queryType students1:(NSArray *)students1 students2:(NSArray *)students2 {
+    NSMutableArray *retArray = [NSMutableArray array];
+    NSMutableDictionary *groups = [NSMutableDictionary dictionary];
+    //first handle all FRIEND queries
+    for(NSInteger i=0;i<[queryType count];i++) {
+        if ([[queryType objectAtIndex:i] isEqualToString:@"Friend"]) {
+            NSNumber *s1 = [students1 objectAtIndex:i] ;
+            NSNumber *s2 = [students2 objectAtIndex:i] ;
+            //make friends.
+            NSMutableSet *set1 = [groups objectForKey:s1];
+            if (set1 == nil) {
+                set1 = [NSMutableSet set];
+            }
+            [set1 addObject:s2];
+            
+            NSMutableSet *set2 = [groups objectForKey:s2];
+            if (set2 == nil) {
+                set2 = [NSMutableSet set];
+            }
+            [set2 addObject:s1];
+            [set1 unionSet:set2];
+            [set2 unionSet:set1];
+            [groups setObject:set1 forKey:s1];
+            [groups setObject:set2 forKey:s2];
+        }
+    }
+    NSLog(@"groups = %@", groups);
+    
+    //compute TOTAL queries
+    for(NSInteger i=0;i<[queryType count];i++) {
+        if ([[queryType objectAtIndex:i] isEqualToString:@"Total"]) {
+            NSNumber *s1 = [students1 objectAtIndex:i] ;
+            NSNumber *s2 = [students2 objectAtIndex:i] ;
+            //make friends.
+            NSInteger count = 0;
+            BOOL sameSet = NO;
+            NSMutableSet *set1 = [groups objectForKey:s1];
+            if (set1 == nil) {
+                count = 1;
+            } else {
+                if ([set1 containsObject:s2]) {
+                    sameSet = YES;
+                }
+                count = [set1 count];
+            }
+            
+            if (sameSet) {
+                [retArray addObject:@(count)];
+                continue;
+            }
+            //diff sets
+            NSMutableSet *set2 = [groups objectForKey:s2];
+            if (set2 == nil) {
+                count += 1;
+            } else {
+                count += [set2 count];
+            }
+            [retArray addObject:@(count)];
+        }
+    }
+    return retArray;
+}
+
 @end

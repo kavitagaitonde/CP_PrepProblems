@@ -170,10 +170,26 @@
 
 //Print all subsequences of string
 //TODO
-+ (void) printAllSubsequences:(NSString *) A {
++ (void) allSubsequences:(NSString *) A output:(NSMutableSet*)output {
+    //traverse entire string
+    NSLog(@"A = %@", A);
     for (NSInteger i=0;i<[A length];i++) {
+        //construct substring
         for (NSInteger j=[A length];j>i;j--) {
+            NSLog(@"A = %@ -- i = %ld, j = %ld", A, i, j);
+            NSRange r = NSMakeRange(i, j-i);
+            NSMutableString *mA = [[A substringWithRange:r] mutableCopy];
+            NSLog(@"A = %@ -- mA = %@", A, mA);
+            [output addObject:[NSString stringWithString:mA]];
             
+            //remove one character at a time, during recursion more hcaracters will be removed
+            for (NSInteger k=1;k<[mA length]-1;k++) {
+                NSRange dR = NSMakeRange(k, 1);
+                [mA deleteCharactersInRange:dR];
+                if (![output containsObject:mA]) {
+                    [self allSubsequences:mA output:output];
+                }
+            }
         }
     }
 }

@@ -14,5 +14,6 @@
 + (BOOL) isPalindrome:(NSString *) A;
 + (NSString *) longestPalindrome:(NSString *) A ;
 + (BOOL) isSubsequence:(NSString *) A inString:(NSString *) B;
++ (void) allSubsequences:(NSString *) A output:(NSMutableSet*)output;
 
 @end

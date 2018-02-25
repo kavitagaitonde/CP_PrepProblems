@@ -11,7 +11,7 @@
 
 @implementation TreeNode
 
-- (id) initWithData:(NSUInteger)val{
+- (id) initWithData:(NSInteger)val{
     self = [super init];
     if (self)
     {
@@ -21,6 +21,108 @@
     }
     return self;
 }
+@end
+
+
+@implementation LRUNode
+
+- (id)initWithData:(NSInteger)key :(NSInteger)val{
+    self = [super init];
+    if (self)
+    {
+        self.key = key;
+        self.val = val;
+        self.prev = nil;
+        self.next = nil;
+    }
+    return self;
+}
+
+@end
+
+//LRU cache. Design and implement a data structure for Least Recently Used (LRU) cache. It should support the following operations: get and set.
+//get(key) - Get the value (will always be positive) of the key if the key exists in the cache, otherwise return -1.
+//set(key, value) - Set or insert the value if the key is not already present. When the cache reaches its capacity, it should invalidate the least recently used item before inserting the new item.
+//The LRUCache will be initialized with an integer corresponding to its capacity. Capacity indicates the maximum number of unique keys it can hold at a time.
+@interface LRUCache ()
+
+@property (assign, nonatomic) NSUInteger capacity;
+//cache of LRUNodes
+@property (strong, nonatomic) NSMutableDictionary *cache;
+@property (strong, nonatomic) LRUNode *queue;
+@property (strong, nonatomic) LRUNode *queueEnd;
+@end
+
+
+@implementation LRUCache
+
+- (id)init:(NSInteger)capacity  {
+    self = [super init];
+    if (self)
+    {
+        _capacity = capacity;
+        _cache = [NSMutableDictionary dictionaryWithCapacity:capacity];
+        _queue = nil;
+        _queueEnd = nil;
+        NSLog(@"LRUCache capacity: %ld", _capacity);
+    }
+    return self;
+}
+
+- (NSInteger)get:(NSInteger)key {
+    LRUNode *node = [_cache objectForKey:@(key)];
+    if (node) {
+        if (node != _queue) {
+            //remove node from doubly linked list
+            LRUNode *prevNode = node.prev;
+            node.prev = nil;
+            prevNode.next = node.next;
+            if (node.next == nil) { //last node
+                _queueEnd = prevNode;
+            } else {
+                node.next.prev = prevNode;
+                node.next = nil;
+            }
+            //put this node to the start of doubly linked list
+            node.next = _queue;
+            _queue.prev = node;
+            _queue = node;
+        }
+        NSLog(@"LRUCache get cache for key: %ld, value: %ld", key, node.val);
+        return (node.val);
+    } else {
+        NSLog(@"LRUCache get cache for key: %ld, value: -1", key);
+        return -1;
+    }
+}
+
+- (void)set:(NSInteger) key :(NSInteger) value {
+    if (!_queue) {
+        NSLog(@"LRUCache initializing cache with key: %ld, value: %ld", key, value);
+        _queue = [[LRUNode alloc] initWithData:key :value];
+        _queueEnd = _queue;
+        [_cache setObject:_queue forKey:@(key)];
+    } else {
+        if ([_cache count] == _capacity) {
+            NSLog(@"LRUCache max cache ...");
+            //remove last node from doublylinked list
+            LRUNode *last = _queueEnd;
+            _queueEnd = _queueEnd.prev;
+            _queueEnd.next = nil;
+            //remove from dictionary
+            NSLog(@"LRUCache removing cache key: %ld, value: %ld", last.key, last.val);
+            [_cache removeObjectForKey:@(last.key)];
+        }
+        NSLog(@"LRUCache add to cache with key: %ld, value: %ld", key, value);
+        //add new value
+        LRUNode *node = [[LRUNode alloc] initWithData:key :value];
+        node.next = _queue;
+        _queue.prev = node;
+        _queue = node;
+        [_cache setObject:_queue forKey:@(key)];
+    }
+}
+
 @end
 
 
@@ -77,7 +179,7 @@
     return arr;
 }
 
-
+// Distinct numbers in a window. You are given an array of N integers, A1, A2 ,…, AN and an integer K. Return the count of distinct numbers in all windows of size K.
 + (NSMutableArray *) dNums:(NSMutableArray *) A :(NSInteger) B  {
     if (A == nil || [A count] == 0 || [A count] < B) {
         return [NSMutableArray array];
@@ -87,7 +189,7 @@
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     NSMutableArray *arr = [NSMutableArray array];
     NSInteger numsCount = 0;
-    //prepare hasmap with first B elements
+    //prepare hashmap with first B elements
     for (NSInteger i=0;i<B;i++){
         NSNumber *val = [dict objectForKey:[A objectAtIndex:i]];
         if (val != nil) {
@@ -130,41 +232,89 @@
     return arr;
 }
 
-/*+ (ListNode*) mergeKSortedLists:(NSMutableArray *) A {
+//Merge K Sorted Lists. Merge k sorted linked lists or arrays in this case and return it as one sorted list.
++ (NSArray*) mergeKSortedLists:(NSMutableArray *) A {
+    NSMutableArray *output = [NSMutableArray array];
     NSMutableArray *minHeap = [NSMutableArray array];
-    while () {
+    NSInteger minIndex = 0;
+    BOOL done = NO;
+    while (!done) {
         NSInteger i = 0;
         while (i < [A count]) {
-            ListNode *node = [A objectAtIndex:i];
-            [self addToMinHeap:minHeap node:node];
-            if (node.next != nil) {
-                [A replaceObjectAtIndex:i withObject:node.next];
+            NSMutableArray *a = [A objectAtIndex:i];
+            if ([a count] > 0) {
+                NSInteger val = [[a objectAtIndex:0] intValue];
+                [self addToMinHeap:minHeap val:val];
+                [a removeObjectAtIndex:0];
+                if ([[minHeap objectAtIndex:0] intValue] == val) {
+                    minIndex = i;
+                }
                 i++;
             } else {
+                //remove empty list
                 [A removeObjectAtIndex:i];
             }
         }
+        if (i == 0) {
+            done = YES;
+        }
+        //remove the min element from heap and put in the output array
+        if (done) {
+            while ([minHeap count] > 0) {
+                [output addObject:[minHeap objectAtIndex:0]];
+                [self removeFromMinHeap:minHeap];
+            }
+            break;
+        } else {
+            [output addObject:[minHeap objectAtIndex:0]];
+            [self removeFromMinHeap:minHeap];
+        }
     }
+    return output;
 }
 
-+ (void) addToMinHeap:(NSMutableArray *)minHeap node:(ListNode*)node {
-    [minHeap addObject:node];
++ (void) addToMinHeap:(NSMutableArray *)minHeap val:(NSInteger)val {
+    [minHeap addObject:@(val)];
     //heapify : child = 2n, 2n+1 and parent = n/2
     NSInteger index = [minHeap count];
     while (index > 1) {
         NSInteger parentIndex = index/2;
-        ListNode *parent = [minHeap objectAtIndex:parentIndex-1];
-        if (parent.data > node.data) {
+        NSInteger parent = [[minHeap objectAtIndex:parentIndex-1] intValue];
+        if (parent > val) {
             //swap
-            [minHeap replaceObjectAtIndex:index-1 withObject:parent];
-            [minHeap replaceObjectAtIndex:parentIndex-1 withObject:node];
-            node = [minHeap objectAtIndex:parentIndex-1];
+            [minHeap replaceObjectAtIndex:index-1 withObject:@(parent)];
+            [minHeap replaceObjectAtIndex:parentIndex-1 withObject:@(val)];
+            val = [[minHeap objectAtIndex:parentIndex-1] intValue];
             index = parentIndex;
         } else {
             break;
         }
     }
-}*/
+}
+
++ (void) removeFromMinHeap:(NSMutableArray *)minHeap {
+    NSInteger lastVal = [[minHeap objectAtIndex:[minHeap count]-1] intValue];
+    [minHeap removeLastObject];
+    [minHeap replaceObjectAtIndex:0 withObject:@(lastVal)];
+    NSInteger index = 0;
+    while (index < [minHeap count]) {
+        NSInteger leftChildIndex = 2*(index+1);
+        NSInteger rightChildIndex = 2*(index+2);
+        NSInteger currVal = [[minHeap objectAtIndex:index] intValue];
+        if (leftChildIndex < [minHeap count] && currVal > [[minHeap objectAtIndex:leftChildIndex-1] intValue]) {
+            //swap with left child
+            [minHeap replaceObjectAtIndex:index-1 withObject:[minHeap objectAtIndex:leftChildIndex-1]];
+            [minHeap replaceObjectAtIndex:leftChildIndex-1 withObject:@(currVal)];
+        } else if (rightChildIndex < [minHeap count] && currVal > [[minHeap objectAtIndex:rightChildIndex-1] intValue]) {
+            //swap with right child
+            [minHeap replaceObjectAtIndex:index-1 withObject:[minHeap objectAtIndex:rightChildIndex-1]];
+            [minHeap replaceObjectAtIndex:rightChildIndex-1 withObject:@(currVal)];
+        } else {
+            return;
+        }
+    }
+}
+
 
 + (TreeNode*) getNextSuccessor:(TreeNode*)node successorOf:(NSInteger)successorOf {
     if (node == nil) {

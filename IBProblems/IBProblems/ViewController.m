@@ -20,6 +20,8 @@
 #import "GraphProblems.h"
 #import "TreesAndHeaps.h"
 #import "DynamicProgrammingProblems.h"
+#import "GreedyProblems.h"
+
 
 @interface ViewController ()
 
@@ -379,7 +381,7 @@
     A = @[@(1), @(2), @(3)];
     list1 = [ListNode initWithArray:A];
     retTreeNode = [TreesAndHeaps convertSortedListToBST:list1];
-    NSLog(@"**** convertSortedListToBST: %@", [TreesAndHeaps inorderTraversalIterative:retTreeNode]);*/
+    NSLog(@"**** convertSortedListToBST: %@", [TreesAndHeaps inorderTraversalIterative:retTreeNode]);
     LRUCache *lruCache = [[LRUCache alloc] init:2];
     [lruCache set:1 :10];
     [lruCache set:5 :12];
@@ -387,7 +389,7 @@
     [lruCache get:1];
     [lruCache get:10];
     [lruCache set:6 :14];
-    [lruCache get:5];
+    [lruCache get:5];*/
     
     // DYNAMIC PROGRAMMING problems
     /*input = 3;
@@ -462,6 +464,12 @@
     A = @[@(1), @(3), @(5), @(6), @(4), @(8), @(4), @(3), @(2), @(1)];
     retval = [DynamicProgrammingProblems longestSubsequenceLength:A];
     NSLog(@"**** longestSubsequenceLength: %ld", retval);*/
+    
+    
+    //GREEDY problems
+    A = @[@(-10000000), @(1), @(2), @(3), @(4)];
+    retval = [GreedyProblems maxp3:A];
+    NSLog(@"**** max multiple: %ld", retval);
 }
 
 @end

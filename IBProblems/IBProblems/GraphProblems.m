@@ -45,6 +45,7 @@
 
 @implementation GraphProblems
 
+//Clone an undirected graph. Each node in the graph contains a label and a list of its neighbors.
 + (GraphNode*) cloneGraph:(GraphNode*)node {
     return [self cloneGraphBFS:node vertices:[NSMutableDictionary dictionary]];
     
@@ -96,6 +97,7 @@
     return startNode;
 }
 
+// BFS traversal
 + (void) bfsTraversal:(GraphNode*)node {
     NSMutableArray *queue = [NSMutableArray array];
     [queue addObject:node];
@@ -165,6 +167,8 @@
     return maxD + 1;
 }
 
+// Largest Distance between nodes of a Tree
+//The goal of the problem is to find largest distance between two nodes in a tree. Distance between two nodes is a number of edges on a path between the nodes (there will be a unique path between any pair of nodes since it is a tree)
 + (NSInteger) largestDistance:(NSMutableArray *) A  {
     
     NSMutableArray *graphArray = [NSMutableArray array];
@@ -244,6 +248,7 @@
     
 }
 
+// Given the total number of courses and a list of prerequisite pairs, is it possible for you to finish all courses. return 1/0 if it is possible/not possible.
 + (NSInteger) canFinishCourseWithPrerequisites:(NSInteger) A :(NSArray *) B :(NSArray *) C  {
     NSMutableArray *courses = [NSMutableArray array];
     NSMutableArray *dependents = [NSMutableArray array];
